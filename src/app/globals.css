@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--theme-primary, #d4af37);
+  --color-secondary: var(--theme-secondary, #f4f4f5);
+  --color-accent: var(--theme-accent, #9a3412);
+  --color-background-custom: var(--theme-background-custom, #09090b);
+  --color-text-custom: var(--theme-text-custom, #e4e4e7);
+  --color-text-muted: var(--theme-text-muted, #a1a1aa);
+
+  --font-heading: var(--theme-font-heading, "Outfit", sans-serif);
+  --font-body: var(--theme-font-body, "Inter", sans-serif);
+
+  --color-btn-primary: var(--btn-primary-bg, #d4af37);
+  --color-btn-primary-text: var(--btn-primary-text, #09090b);
+  --radius-btn-primary: var(--btn-primary-radius, 0.75rem);
+  --shadow-btn-primary: var(--btn-primary-shadow, 0 10px 15px -3px rgba(0,0,0,0.1));
+
+  --color-card: var(--card-bg, rgba(24,24,27,0.45));
+  --color-card-border: var(--card-border, rgba(38,38,38,0.80));
+  --radius-card: var(--card-radius, 1rem);
+  --shadow-card: var(--card-shadow, 0 10px 15px -3px rgba(0,0,0,0.1));
+
+  --color-input: var(--input-bg, rgba(9,9,11,0.70));
+  --color-input-border: var(--input-border, #262626);
+  --radius-input: var(--input-radius, 0.75rem);
+  --color-input-text: var(--input-text, #ffffff);
+  --color-input-placeholder: var(--input-placeholder, rgba(255,255,255,0.25));
+
+  --color-badge: var(--badge-bg, rgba(212,175,55,0.10));
+  --color-badge-text: var(--badge-text, #d4af37);
+  --color-badge-border: var(--badge-border, rgba(212,175,55,0.25));
+  --radius-badge: var(--badge-radius, 9999px);
+
+  --color-navbar: var(--navbar-bg, rgba(9,9,11,0.90));
+  --color-navbar-border: var(--navbar-border, rgba(38,38,38,0.80));
+  --color-navbar-text: var(--navbar-text, #a1a1aa);
+  --color-navbar-hover-text: var(--navbar-hover-text, #d4af37);
+}
+
+body {
+  background-color: var(--color-background-custom);
+  color: var(--color-text-custom);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, transform, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+::selection {
+  background: var(--selection-bg, var(--theme-primary));
+  color: var(--selection-text, #09090b);
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-radius: var(--btn-primary-radius);
+  box-shadow: var(--btn-primary-shadow);
+}
+.btn-primary:hover {
+  background: var(--btn-primary-hover-bg, var(--btn-primary-bg));
+  box-shadow: var(--btn-primary-hover-shadow, var(--btn-primary-shadow));
+  transform: scale(var(--btn-primary-hover-scale, 1));
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border-radius: var(--btn-primary-radius);
+}
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover-bg);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: var(--card-left-border, 1px solid var(--card-border));
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+.card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover, var(--card-border));
+  transform: var(--card-hover-transform, none);
+  box-shadow: var(--card-hover-shadow, var(--card-shadow));
+}
+
+.card-raised {
+  background: var(--card-bg-raised);
+}
+
+.input {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  color: var(--input-text);
+  outline: none;
+}
+.input::placeholder {
+  color: var(--input-placeholder);
+}
+.input:focus {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 1px var(--input-focus-ring);
+}
+
+.badge {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--badge-border);
+  border-radius: var(--badge-radius);
+}
+
+.nav-link {
+  color: var(--navbar-text);
+}
+.nav-link:hover {
+  color: var(--navbar-hover-text);
+}

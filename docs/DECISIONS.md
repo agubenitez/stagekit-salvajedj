@@ -1,0 +1,102 @@
+# Registro de Decisiones Arquitectónicas (ADRs)
+
+Este documento registra las decisiones técnicas y arquitectónicas más importantes tomadas para el desarrollo de StageKit Core / LandingDJ, junto con sus justificaciones y alternativas consideradas.
+
+---
+
+## ADR 01: Selección de Framework Principal (Next.js App Router)
+
+- **Estado**: Aprobado.
+- **Contexto**: El producto LandingDJ necesita ser altamente veloz, amigable para motores de búsqueda (SEO) y servir como base tecnológica reutilizable para otros proyectos más grandes dentro de StageKit (como StageKit Agency).
+- **Decisión**: Utilizar **Next.js con App Router** (React 19, TypeScript y Tailwind CSS).
+- **Justificación**:
+  - **Server Components (RSC)**: Permiten leer el archivo de configuración `landingdj.config.json` directamente desde el sistema de archivos del servidor durante el renderizado, enviando cero HTML innecesario o lógica de parsing al cliente.
+  - **SEO nativo**: La función `generateMetadata()` integrada de Next.js permite inyectar etiquetas meta de Open Graph, título, descripción y favicon directamente en el servidor basándose en la configuración dinámica.
+  - **Escalabilidad**: Proporciona un entorno robusto para la inclusión de API Routes y optimizaciones automáticas de imágenes.
+- **Consecuencias**: Mayor complejidad de setup inicial frente a un SPA de React puro, pero entrega un producto con tiempos de carga casi instantáneos (Core Web Vitals óptimos) y máxima flexibilidad para el futuro.
+
+---
+
+## ADR 02: Carga Declarativa de Configuración en Servidor
+
+- **Estado**: Aprobado.
+- **Contexto**: Necesitamos inyectar toda la personalización de `landingdj.config.json` sin causar retrasos en el cliente (flickering o layout shift).
+- **Decisión**: El archivo de configuración reside en `public/config/landingdj.config.json` y se lee usando el módulo `fs` de Node.js en los componentes de servidor raíz (`layout.tsx`, `page.tsx`).
+- **Justificación**:
+  - **Cero latencia de red**: La configuración se lee localmente en milisegundos en el servidor.
+  - **Seguridad**: Los datos críticos (como el `destinationEmail`) pueden permanecer o validarse en el servidor sin exponerse innecesariamente en bundles de JavaScript del cliente.
+  - **SEO**: Permite generar metadata estática antes de enviar el HTML al navegador.
+- **Consecuencias**: El archivo debe estar ubicado exactamente en la ruta especificada y debe ser un JSON válido que coincida con el esquema de Zod.
+
+---
+
+## ADR 03: Validación Robusta con Zod
+
+- **Estado**: Aprobado.
+- **Contexto**: Si un usuario o desarrollador comete un error tipográfico en el JSON de configuración, el sitio web podría romperse silenciosamente o comportarse de manera errática.
+- **Decisión**: Implementar un esquema de validación estricto utilizando **Zod** en el servidor antes de realizar el renderizado.
+- **Justificación**:
+  - **Tipado seguro estricto**: Convierte la configuración JSON cruda en un tipo de TypeScript fuertemente tipado (`LandingConfig`).
+  - **Fallo rápido (Fail-Fast)**: Si el archivo JSON es inválido, el sistema arroja un error amigable en la consola o muestra un fallback limpio, evitando renderizados rotos o errores de ejecución difíciles de depurar en producción.
+- **Consecuencias**: Cada nuevo campo configurable debe agregarse tanto al JSON como al esquema Zod en `/src/lib/config/schema.ts`.
+
+---
+
+## ADR 04: Estilización y Tematización Dinámica con Tailwind v4 y Variables CSS
+
+- **Estado**: Aprobado.
+- **Contexto**: El cliente final puede configurar colores y tipografías personalizadas desde el JSON. Tailwind tradicionalmente se compila estáticamente.
+- **Decisión**: Mapear la configuración de color y tipografía de `landingdj.config.json` a variables CSS personalizadas (`--color-primary`, `--font-heading`, etc.) inyectadas dinámicamente en `:root` a través de una etiqueta `<style>` generada en el servidor. Luego, estas variables se enlazan con el sistema de temas `@theme` de Tailwind v4.
+- **Justificación**:
+  - **Compatibilidad con Tailwind**: Permite usar clases como `bg-primary` o `font-heading` de manera natural en todo el código base.
+  - **Cero sobrecarga JS**: Todo se resuelve a nivel CSS nativo en el navegador.
+- **Consecuencias**: Las fuentes deben ser validadas contra un catálogo seguro predefinido e importarse dinámicamente usando etiquetas de Google Fonts en el head.
+
+---
+
+## ADR 05: Servicio de Email Desacoplado (Patrón Provider)
+
+- **Estado**: Aprobado y Extendido.
+- **Contexto**: El envío de correos desde el formulario de contacto se implementa de manera temporal con un placeholder, pero debe poder cambiarse fácilmente a proveedores de nivel corporativo (SendGrid, Resend, AWS SES) en el futuro.
+- **Decisión**: Crear una interfaz de abstracción (`EmailService`) y un despachador centralizado en la API Route. En esta fase se implementa un `PlaceholderEmailProvider` que simplemente simula el envío con logs detallados.
+- **Justificación**:
+  - **Aislamiento**: El código del formulario de contacto del cliente solo interactúa con un endpoint `/api/contact`. El backend desacopla los detalles del proveedor mediante una fábrica o inyección simple.
+  - **Mantenibilidad**: Cambiar de proveedor en el futuro requerirá modificar únicamente un archivo de servicio en la carpeta `/src/lib/email/` sin tocar un solo componente visual.
+- **Consecuencias**: El frontend maneja un estado genérico de "enviando", "éxito" y "error", delegando toda la complejidad operativa al backend de Next.js.
+
+### Extensión — Fase 4: SMTP (Gmail) como Provider Real
+
+- **Estado**: Implementado.
+- **Decisión**: Incorporar `nodemailer` con SMTP de Gmail como primer proveedor real, manteniendo el patrón Provider existente.
+- **Seguridad**: Las credenciales SMTP (`SMTP_USER`, `SMTP_PASS`) se configuran exclusivamente en variables de entorno (`.env`), NO en el JSON de configuración. El archivo `.env` está excluido de git.
+- **Uso**: Con `EMAIL_PROVIDER=smtp` en el entorno, el factory instancia `SmtpEmailProvider` automáticamente. Sin cambios en componentes visuales ni en la API Route.
+
+---
+
+## ADR 06: Design Presets como Sistema de Tematización Declarativa
+
+- **Estado**: Aprobado e Implementado.
+- **Contexto**: Originalmente los colores y tipografía se configuraban directamente en el JSON (`colors.primary`, `colors.secondary`, `typography.heading`, etc.). A medida que crecía la necesidad de controles visuales más finos (radios, sombras, animaciones, fondos de sección, overlays), quedó claro que tener valores sueltos en el JSON era frágil e inconsistente: cambiar de dorado a cian requería editar 7+ campos manualmente sin garantía de coherencia visual.
+- **Decisión**: Crear un sistema de **Design Presets** donde cada preset es un objeto TypeScript en `src/features/theme/designPresets.ts` que encapsula ~56 tokens visuales y estructurales. El JSON solo referencia el nombre del preset (`designPreset: "gold"`).
+- **Justificación**:
+  - **Coherencia visual garantizada**: Cada preset es diseñado como un sistema completo (colores, tipografía, radios, sombras, animaciones, fondos, overlays). No hay riesgo de "rojo de un lado, azul del otro".
+  - **Cambio instantáneo**: Modificar una sola línea en el JSON (`"designPreset": "neon"`) cambia toda la apariencia del sitio.
+  - **Extensible**: Agregar un preset nuevo requiere solo un objeto en `designPresets.ts` + el nombre en `validDesignPresets` del JSON. Sin cambios en componentes.
+  - **Tokens estructurales**: Los presets controlan no solo colores sino también `cardHoverTransform`, `cardLeftBorder`, `sectionBg`, `headingColor`, `overlayColor`, `fontWeightHeading`, `letterSpacingTag`, etc. — permitiendo cambios de layout y comportamiento.
+- **Consecuencias**:
+  - El JSON ya no acepta `colors`/`typography` como campos directos. Se resuelven desde el preset en `loader.ts`.
+  - `ThemeProvider.tsx` inyecta ~56 CSS variables desde los tokens del preset seleccionado.
+  - Todos los componentes fueron migrados de clases hardcodeadas (`text-white`, `bg-black`, `font-extrabold`) a CSS variables.
+  - Para crear un preset visualmente coherente, se requiere diseñar los ~56 tokens manualmente (no es una fórmula automática).
+
+### ADR 07 — Alternancia dinámica de fondos de sección
+
+- **Contexto**: Cada componente de sección tenía su fondo hardcodeado (`bg-[var(--section-bg)]`, `section-bg-alt` o `section-bg-mid`). Al reordenar secciones en el JSON, el patrón de alternancia se rompía porque los bg no seguían el orden dinámico.
+- **Decisión**: Cada sección (excepto hero) lee `var(--section-current-bg)` de un wrapper `<div>` en `LandingContainer.tsx`. El wrapper alterna entre `var(--section-bg)` y `var(--section-bg-alt)` según la posición de la sección en `sectionOrder`, ignorando hero.
+- **Justificación**:
+  - La alternancia A/B perfecta se mantiene automáticamente al reordenar.
+  - No requiere props, context API ni cambios en schemas.
+  - Hero se excluye porque usa su propio layout con overlays.
+- **Consecuencias**:
+  - 10 componentes de sección reemplazaron su bg hardcodeado por `bg-[var(--section-current-bg)]`.
+  - `LandingContainer.tsx` calcula el bg basado en índice par/impar.

@@ -1,0 +1,285 @@
+{
+  "designPreset": "gold",
+  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark"],
+
+  "artisticName": "Anto Bravo DJ",
+  "slogan": "   ",
+  "description": "DJ y Productor musical uruguaya radicada en Punta del este con mas de 5 años de trayectoria en la escena electronica nacional e internacional. Con una identidad sonora marcada por la fusion de energia, elegancia y profundidad ritmica. Especilizada en House, Melodic House, Deep House, Tech House.",
+  "logo": "/images/logo.png",
+  "favicon": "/favicon.ico",
+
+  "sectionMaxWidth": "1152px",
+  "validSectionIds": ["hero", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "tours", "tour_table", "contact"],
+  "sectionOrder": ["hero", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "tours", "tour_table", "contact"],
+
+  "hero": {
+    "type": "image",
+    "url": "/images/heroportada.jpg",
+    "ctaText": "Consultar Disponibilidad"
+  },
+  "heroTexts": {
+    "badge": "Live Experience",
+    "scrollIndicator": "Descubrir"
+  },
+
+  "bioTexts": {
+    "sectionTag": "Trayectoria & Sello",
+    "headingPrefix": "Detr\u00e1s del Sonido: ",
+    "heading": "Detr\u00e1s del Sonido: Anto Bravo DJ",
+    "cardTitle": "Credenciales Art\u00edsticas",
+    "badges": [
+      { "title": "M\u00e1s de 5 A\u00f1os de Experiencia", "description": "Festivales Electronica - Clubes - Yates - Eventos privados." },
+      { "title": "Estilo Exclusivo & Personalizado", "description": "Cada set musical se dise\u00f1a seg\u00fan el ambiente del evento." },
+      { "title": "Audio", "description": "Equipos certificados para asegurar la m\u00e1xima fidelidad auditiva." }
+    ]
+  },
+
+  "services": [
+    {
+      "id": "srv_1",
+      "title": "Festivales de electrónica y clubes",
+      "description": "Sets exclusivos para cada evento con una selección musical que combina lo mejor del house, melodic house, deep house y tech house, creando una experiencia sonora única e inolvidable.",
+      "icon": "music"
+    },
+    {
+      "id": "srv_2",
+      "title": "Eventos privados y corporativos",
+      "description": "Diseñamos experiencias musicales a medida para eventos, yates, lanzamientos de productos y eventos corporativos, asegurando que cada momento sea memorable y esté acompañado de la mejor música.",
+      "icon": "briefcase"
+    }
+  ],
+  "servicesTexts": {
+    "sectionTag": "Servicios Exclusivos",
+    "heading": "Experiencias Musicales a Medida",
+    "description": "Sets profesionales diseñados para sintonizar perfectamente con la energía de cada evento."
+  },
+
+  "equipment": [
+    {
+      "id": "eq_1",
+      "name": "Pioneer DJ CDJ-3000",
+      "category": "Controladores",
+      "icon": "speaker"
+    },
+    {
+      "id": "eq_2",
+      "name": "Mixer Pioneer DJM-900NXS2",
+      "category": "Sistemas de Audio",
+      "icon": "speaker"
+    }
+  ],
+  "equipmentTexts": {
+    "sectionTag": "Rider Técnico",
+    "heading": "Equipamiento Profesional de Alta Gama",
+    "description": "Utilizamos tecnología líder en la industria para garantizar una fidelidad acústica óptima y un show visual impactante."
+  },
+
+  "gallery": [
+    "/images/heroportada.jpg",
+    "/images/heroportada.jpg",
+    "/images/heroportada.jpg"
+  ],
+  "galleryTexts": {
+    "sectionTag": "Gira & Eventos",
+    "heading": "Momentos Capturados en Vivo",
+    "description": "Una mirada de cerca a la atmósfera y energía de los sets en vivo, festivales y fiestas privadas de alto nivel.",
+    "overlayLabel": "Stage Capture"
+  },
+
+  "videos": [
+    {
+      "id": "vid_1",
+      "youtubeId": "kMJVNerOtRI",
+      "title": "Anto Bravo DJ- Live Sunset DJ Set 2026",
+      "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200"
+    },
+    {
+      "id": "vid_2",
+      "youtubeId": "kMJVNerOtRI",
+      "title": "Anto Bravo DJ- Live Set Punta del Este 2025",
+      "thumbnail": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1200"
+    }
+  ],
+  "videosTexts": {
+    "sectionTag": "Sets & Sesiones",
+    "heading": "Videos de Presentaciones",
+    "description": "Siente el ritmo y sintoniza con el espectáculo visual y auditivo de los sets en vivo, transmitidos directamente desde el escenario.",
+    "playLabel": "Reproducir video",
+    "subtitleLabel": "Presentación Audiovisual Oficial"
+  },
+
+  "songs": [
+    {
+      "id": "song_1",
+      "title": "Starlight (Original Mix)",
+      "url": "https://soundcloud.com/digital-groove-official/morgi-masuda?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+    },
+    {
+      "id": "song_3",
+      "title": "Live at Club",
+      "url": "https://soundcloud.com/anto-bravo-240086065/tech-house-set2026"
+    }
+  ],
+  "songsTexts": {
+    "sectionTag": "Escenario Musical",
+    "heading": "Escuch\u00e1 mi Sonido",
+    "description": "Dale play y sent\u00ed la m\u00fasica."
+  },
+
+  "faq": [
+    {
+      "id": "faq_1",
+      "question": "¿Con cuánta anticipación recomiendas reservar la fecha?",
+      "answer": "Para garantizar la exclusividad y preparar de forma minuciosa la curaduría acústica, recomendamos realizar la reserva con un mínimo de 4 a 8 meses de anticipación, especialmente durante la temporada alta de bodas."
+    },
+    {
+      "id": "faq_2",
+      "question": "¿El servicio incluye la provisión e instalación de equipos?",
+      "answer": "Sí, diseñamos soluciones integrales de montaje. Nos encargamos de proveer sistemas de audio de alta gama (L-Acoustics), consolas Pioneer DJ profesionales, micrófonos inalámbricos premium y un show de iluminación adaptado a la arquitectura de tu locación."
+    },
+    {
+      "id": "faq_3",
+      "question": "¿Cómo se define la selección de géneros musicales?",
+      "answer": "Mantenemos sesiones privadas de planificación previas al evento donde definimos la línea de géneros, tus temas indispensables, preferencias particulares y canciones que deseas evitar. Cada set musical se crea a la medida para garantizar que la pista se mantenga con la máxima vibra."
+    }
+  ],
+  "faqTexts": {
+    "sectionTag": "Dudas Comunes",
+    "heading": "Preguntas Frecuentes",
+    "description": "¿Tienes alguna consulta técnica o contractual? Aquí tienes respuestas directas sobre nuestra forma de trabajo."
+  },
+
+  "tours": [
+    {
+      "id": "tour_1",
+      "date": "2026-07-31",
+      "venue": "Culto Bar",
+      "location": "C\u00f3rdoba",
+      "country": "Argentina",
+      "countryCode": "AR",
+      "ticketUrl": "https://tickethub.com.uy/event/anto-bravo",
+      "status": "en_venta"
+    },
+    {
+      "id": "tour_2",
+      "date": "2026-08-15",
+      "venue": "Club Bah\u00eda",
+      "location": "Punta del Este",
+      "country": "Uruguay",
+      "countryCode": "UY",
+      "status": "proximamente"
+    }
+  ],
+  "toursTexts": {
+    "sectionTag": "Pr\u00f3ximos Shows",
+    "heading": "Fechas de Gira",
+    "description": "No te pierdas las pr\u00f3ximas presentaciones en vivo.",
+    "enVentaLabel": "Conseguir Entradas",
+    "finalizadoLabel": "Finalizado",
+    "agotadoLabel": "Agotado",
+    "proximamenteLabel": "Pr\u00f3ximamente"
+  },
+
+  "tourTable": [
+    {
+      "id": "tt_1",
+      "date": "2026-07-31",
+      "venue": "Culto Bar",
+      "location": "C\u00f3rdoba",
+      "country": "Argentina",
+      "countryCode": "AR",
+      "ticketUrl": "https://tickethub.com.uy/event/anto-bravo",
+      "status": "en_venta"
+    },
+    {
+      "id": "tt_2",
+      "date": "2026-08-15",
+      "venue": "Club Bah\u00eda",
+      "location": "Punta del Este",
+      "country": "Uruguay",
+      "countryCode": "UY",
+      "status": "agotado"
+    }
+  ],
+  "tourTableTexts": {
+    "sectionTag": "Pr\u00f3ximos Shows",
+    "heading": "Calendario de Shows",
+    "description": "Todas las fechas confirmadas.",
+    "enVentaLabel": "tickets",
+    "finalizadoLabel": "Finalizado",
+    "agotadoLabel": "Sold Out",
+    "proximamenteLabel": "Pr\u00f3ximamente"
+  },
+
+  "contactForm": {
+    "enabled": true,
+    "title": "Coordinemos tu Próxima Experiencia",
+    "description": "Completa tus datos de contacto y cuéntanos la fecha, locación y detalles iniciales de tu celebración. Nos pondremos en contacto contigo en menos de 24 horas hábiles para diseñar tu presupuesto a medida."
+  },
+  "contactFormTexts": {
+    "sectionTag": "Reservar Fecha",
+    "nameLabel": "Nombre Completo *",
+    "namePlaceholder": "Ej. Carlos Mendoza",
+    "emailLabel": "Correo de Contacto *",
+    "emailPlaceholder": "Ej. carlos@empresa.com",
+    "messageLabel": "Detalles del Evento (Opcional)",
+    "messagePlaceholder": "Por favor dinos la fecha aproximada, lugar, cantidad de invitados y cualquier requerimiento musical especial...",
+    "successTitle": "¡Solicitud Enviada!",
+    "sendAnotherButton": "Enviar otro mensaje",
+    "sendingText": "Registrando solicitud...",
+    "validationError": "Por favor, ingresa tu nombre y correo electr\u00f3nico de contacto.",
+    "apiError": "No se pudo registrar la solicitud de contacto.",
+    "networkError": "Ocurri\u00f3 un problema de red al intentar transmitir el mensaje.",
+    "bullets": [
+      "Soporte técnico y rider incluido",
+      "Contrato legal y factura disponible",
+      "Respuesta garantizada en 24 horas hábiles"
+    ]
+  },
+
+  "navbarTexts": {
+    "bio": "Biografía",
+    "services": "Servicios",
+    "equipment": "Equipamiento",
+    "gallery": "Galería",
+    "videos": "Videos",
+    "songs": "M\u00fasica",
+    "faq": "Preguntas",
+    "tours": "Tour",
+    "tourTable": "Shows",
+    "contact": "Contacto",
+    "ctaButton": "Reservar Show"
+  },
+
+  "footerTexts": {
+    "copyrightTemplate": "\u00a9 {{year}} \u2014 Todos los derechos reservados.",
+    "tagline": "Dise\u00f1ado para DJs y Producci\u00f3n de Eventos Premium.",
+    "socialLabel": "Sintoniza",
+    "creditPrefix": "Tecnolog\u00eda por",
+    "creditBrand": "StageKit Core",
+    "creditTagline": "Manejado por Configuraci\u00f3n Declarativa"
+  },
+
+  "contactButtonText": "Enviar Solicitud",
+  "confirmationPopupText": "Tu solicitud ha sido registrada exitosamente. Estaremos en contacto a la brevedad para coordinar los detalles de tu evento.",
+  "whatsapp": {
+    "enabled": true,
+    "phoneNumber": "59897973677",
+    "buttonText": "Cont\u00e1ctanos por WhatsApp",
+    "message": "Hola! Vi tu landing y quiero consultarte sobre un evento."
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/antobravodj_?igsh=MTNtZ2szeDlzeWg3Zw==",
+    "soundcloud": "https://m.soundcloud.com/anto-bravo-240086065"
+  },
+  "destinationEmail": "agubenitez1995@gmail.com",
+
+  "seo": {
+    "title": "Alexis Verdi | DJ & Productor de Eventos de Lujo",
+    "description": "DJ profesional internacional experto en bodas de alta gama, galas corporativas y experiencias inmersivas con la mejor acústica y equipamiento.",
+    "keywords": ["DJ bodas boutique", "DJ eventos de lujo", "sonido profesional L-Acoustics", "DJ corporativos premium"],
+    "ogImage": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200"
+  }
+}
+
+
