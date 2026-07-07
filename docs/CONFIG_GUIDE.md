@@ -61,10 +61,13 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `frost` | ❄️ Fría | Navy profundo | Azul hielo `#38bdf8` | Inter | `0.75rem` | Técnico, berlinés, profesional |
 | `sienna` | 🔥 Cálida | Terracota | Ámbar `#d97706` | DM Serif Display | `0.75rem` | Orgánico, boho, desértico |
 | `vapor` | 🌸 Vibrante | Púrpura | Magenta `#d946ef` | Plus Jakarta Sans | `0.5rem` | Retro-wave, synthwave, ochentero |
+| `barbie` | 🌸 Vibrante | **Claro** | Hot pink `#ff1493` | Outfit | `1rem` | Femenino, divertido, pop |
+| `barbie-dark` | 🌸 Vibrante | Oscuro | Hot pink `#ff1493` | Outfit | `1rem` | Dark Barbie, actitud |
+| `SalvajeDjPreset` | ❄️ Fría | Espacio profundo | Violeta `#a78bfa` | Space Grotesk | `1rem` | Galaxia, elegante, minimalista |
 
 ```json
-"designPreset": "ember",
-"validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor"]
+"designPreset": "SalvajeDjPreset",
+"validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"]
 ```
 
 > Para crear un preset nuevo: agregarlo en `src/features/theme/designPresets.ts` y añadir su nombre a `validDesignPresets` en el JSON.
@@ -216,8 +219,8 @@ Este ejemplo muestra cómo transformar la landing actual de un DJ en una landing
   "slogan": "   ",
   "description": "DJ y Productor musical uruguaya radicada en Punta del este con mas de 5 años de trayectoria en la escena electronica nacional e internacional.",
   "logo": "/images/logo.png",
-  "designPreset": "gold",
-  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor"],
+  "designPreset": "SalvajeDjPreset",
+  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
   "services": [
     { "id": "srv_1", "title": "Festivales de electrónica y clubes", "description": "Sets exclusivos para cada evento...", "icon": "music" },
     { "id": "srv_2", "title": "Eventos privados y corporativos", "description": "Diseñamos experiencias musicales a medida...", "icon": "briefcase" }
@@ -262,7 +265,7 @@ Este ejemplo muestra cómo transformar la landing actual de un DJ en una landing
   "description": "Packs de presets diseñados por DJs para DJs. Sonidos curados para Tech House, Melodic House y Deep House. Compatibles con Serum, Ableton Live y más.",
   "logo": "/images/beatforge-logo.png",
   "designPreset": "neon",
-  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor"],
+  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
   "services": [
     { "id": "srv_1", "title": "Tech House Essentials", "description": "50 presets diseñados para sesiones de tech house. Incluye leads, basses, plucks y fx. Compatible con Serum v1.5+.", "icon": "waveform" },
     { "id": "srv_2", "title": "Melodic Hypnosis", "description": "Packs de 40 presets melódicos con pads atmosféricos, arpegios y leads etéreos. Ideal para melodic house y progressive.", "icon": "headphones" },

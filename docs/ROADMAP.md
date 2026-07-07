@@ -62,7 +62,7 @@ Este documento establece la progresión del desarrollo de LandingDJ a través de
 - [x] Diseño e implementación de la interface `DesignTokens` con ~56 tokens (colores, tipografía, radios, sombras, animaciones, fondos de sección, overlays, letter-spacing, font-weight).
 - [x] Migración de `ThemeProvider` para inyección directa de CSS variables.
 - [x] Reemplazo de clases hardcodeadas en todos los componentes (`text-white` → `text-[var(--heading-color)]`, `bg-black` → `bg-[var(--hero-bg,#000)]`, etc.).
-- [x] 10 presets completos: `gold` (oscuro/dorado), `neon` (cián/cyberpunk), `slate` (monocromático/radios 0), `pearl` (claro/violeta), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave), `barbie` (hot pink/fondo claro/Playfair Display), `barbie-dark` (hot pink/fondo oscuro/Outfit).
+- [x] 11 presets completos: `gold` (oscuro/dorado), `neon` (cián/cyberpunk), `slate` (monocromático/radios 0), `pearl` (claro/violeta), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave), `barbie` (hot pink/fondo claro/Playfair Display), `barbie-dark` (hot pink/fondo oscuro/Outfit), `SalvajeDjPreset` (violeta galáctico/Space Grotesk/galaxia minimalista).
 - [x] Documentación actualizada.
 - [x] Verificación de compilación.
 

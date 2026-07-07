@@ -102,7 +102,7 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 - [x] **Arquitectura de presets:** Crear sistema de Design Presets con interface `DesignTokens` (~56 tokens) y objetos `DesignPreset` en `src/features/theme/designPresets.ts`.
 - [x] **ThemeProvider actualizado:** Inyecta ~56 CSS variables desde los tokens del preset seleccionado.
 - [x] **Migración de componentes:** Todos los componentes reemplazan clases hardcodeadas (`text-white`, `bg-black`, `font-extrabold`, `tracking-widest`, `text-neutral-300`) por CSS variables (`--heading-color`, `--hero-bg`, `--font-weight-heading`, `--letter-spacing-tag`, `--text-label`).
-- [x] **Presets dark:** `gold` (ámbar/dorado), `neon` (cián/púrpura/cyberpunk), `slate` (monocromático/radios 0), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave).
-- [x] **Preset light:** `pearl` (violeta/claro/cards blancas).
+- [x] **Presets dark:** `gold` (ámbar/dorado), `neon` (cián/púrpura/cyberpunk), `slate` (monocromático/radios 0), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave), `barbie-dark` (hot pink/fondo oscuro), `SalvajeDjPreset` (violeta galáctico/espacio profundo).
+- [x] **Preset light:** `pearl` (violeta/claro/cards blancas), `barbie` (hot pink/claro).
 - [x] **CSS cascade fix:** `ThemeProvider` setea variables directas (`--color-primary`, `--font-heading`) en vez de cadenas `var()` desde `@theme` para evitar fallbacks a valores por defecto.
 - [x] **Documentación actualizada:** `CONFIG_GUIDE.md` (tabla de presets + ejemplos sin `colors`/`typography`), `DECISIONS.md` (ADR 06), `AI_HANDOVER.md` (arquitectura de presets).

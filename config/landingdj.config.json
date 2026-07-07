@@ -1,6 +1,6 @@
 {
-  "designPreset": "gold",
-  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark"],
+  "designPreset": "SalvajeDjPreset",
+  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
 
   "artisticName": "Anto Bravo DJ",
   "slogan": "   ",
