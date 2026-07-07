@@ -2,9 +2,9 @@
   "designPreset": "SalvajeDjPreset",
   "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
 
-  "artisticName": "Anto Bravo DJ",
+  "artisticName": "Salvaje",
   "slogan": "   ",
-  "description": "DJ y Productor musical uruguaya radicada en Punta del este con mas de 5 años de trayectoria en la escena electronica nacional e internacional. Con una identidad sonora marcada por la fusion de energia, elegancia y profundidad ritmica. Especilizada en House, Melodic House, Deep House, Tech House.",
+  "description": "Naci en Montevideo, Uruguay. Mi infancia la vivi en Ombues de Lavalle, Colonia donde creci rodeado de la tranquilidad del campo y aprendi valores que hoy siguen guiando mi vida: la humildad, el esfuerzo y la perseverancia. Tambien estuve un tiempo viviendo en Tarariras donde termine la primaria y luego me mudo a Durazno, Uy. Donde hubo un antes y un despues en mi vida. Comenzaron muchas de las experiencias que formarian mi caracter y futuro profesional. como DJ he tenido la oportunidad de presentarme en una amplia variedad de escenarios, compartiendo mi propuesta musical en sunsets, afters, fiestas privadas y eventos de gran nivel. Como la convocatoria de X Live Producciones donde comparti cabina con ZAARK Dj y productor brasilero. Fiestas en Punta del este como la Neighborhood, yates, fiestas privadas. Sunsets en paradores como Chicho Chihuahua y Sea Sunset en ciudad de la costa.",
   "logo": "/images/logo.png",
   "favicon": "/favicon.ico",
 
@@ -14,23 +14,23 @@
 
   "hero": {
     "type": "image",
-    "url": "/images/heroportada.jpg",
+    "url": "/images/Salvaje2.jpg",
     "ctaText": "Booking"
   },
   "heroTexts": {
-    "badge": "Live Experience",
+    "badge": "DJ",
     "scrollIndicator": "Descubrir"
   },
 
   "bioTexts": {
     "sectionTag": "Trayectoria & Sello",
     "headingPrefix": "Detr\u00e1s del Sonido: ",
-    "heading": "Detr\u00e1s del Sonido: Anto Bravo DJ",
-    "cardTitle": "Credenciales Art\u00edsticas",
+    "heading": "Mi historia: Salvaje DJ",
+    "cardTitle": "",
     "badges": [
-      { "title": "M\u00e1s de 5 A\u00f1os de Experiencia", "description": "Festivales Electronica - Clubes - Yates - Eventos privados." },
-      { "title": "Estilo Exclusivo", "description": "Cada set musical se dise\u00f1a seg\u00fan el ambiente del evento." },
-      { "title": "Dj Producer", "description": "Productor de m\u00fasica electr\u00f3nica con experiencia en la creaci\u00f3n y producci\u00f3n de tracks." }
+      { "title": "", "description": "" },
+      { "title": "", "description": "" },
+      { "title": "", "description": "" }
     ]
   },
 
@@ -75,9 +75,9 @@
   },
 
   "gallery": [
-    "/images/heroportada.jpg",
-    "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200",
-    "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1200"
+    "/images/Salvaje2.jpg",
+    "/images/Salvaje.png",
+    "/images/Salvaje5.jpg"
   ],
   "galleryTexts": {
     "sectionTag": "Gira & Eventos",
@@ -90,13 +90,13 @@
     {
       "id": "vid_1",
       "youtubeId": "kMJVNerOtRI",
-      "title": "Anto Bravo DJ- Live Sunset DJ Set 2026",
+      "title": "Salvaje DJ- Live Sunset DJ Set 2026",
       "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200"
     },
     {
       "id": "vid_2",
       "youtubeId": "kMJVNerOtRI",
-      "title": "Anto Bravo DJ- Live Set Punta del Este 2025",
+      "title": "Salvaje DJ- Live Set Punta del Este 2025",
       "thumbnail": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1200"
     }
   ],
@@ -112,18 +112,18 @@
     {
       "id": "song_1",
       "title": "Starlight (Original Mix)",
-      "url": "https://soundcloud.com/anto-bravo-240086065/demomykonos-wav"
+      "url": "https://soundcloud.com/fabian-aguirre-842759933/salvaje-set-garden"
     },
     {
       "id": "song_3",
       "title": "Live at Club",
-      "url": "https://soundcloud.com/anto-bravo-240086065/tech-house-set2026"
+      "url": "https://soundcloud.com/fabian-aguirre-842759933/set-psytrance-popper"
     }
 
   ],
   "songsTexts": {
     "sectionTag": "Escenario Musical",
-    "heading": "Escuch\u00e1 mi Sonido",
+    "heading": "Mi sonido",
     "description": "Dale play y sent\u00ed la m\u00fasica."
   },
 
@@ -272,24 +272,24 @@
 
   "footerTexts": {
     "copyrightTemplate": "\u00a9 {{year}} \u2014 Todos los derechos reservados.",
-    "tagline": "Dise\u00f1ado para DJs y Producci\u00f3n de Eventos Premium.",
-    "socialLabel": "Sintoniza",
+    "tagline": "Dise\u00f1ado para DJs y Producci\u00f3n de Eventos.",
+    "socialLabel": "Social Media",
     "creditPrefix": "Tecnolog\u00eda por",
     "creditBrand": "StageKit Core",
-    "creditTagline": "Manejado por Configuraci\u00f3n Declarativa"
+    "creditTagline": "© Todos los derechos reservados"
   },
 
   "contactButtonText": "Enviar Solicitud",
   "confirmationPopupText": "Tu solicitud ha sido registrada exitosamente. Estaremos en contacto a la brevedad para coordinar los detalles de tu evento.",
   "whatsapp": {
     "enabled": true,
-    "phoneNumber": "59897973677",
+    "phoneNumber": "59899627846",
     "buttonText": "Cont\u00e1ctanos por WhatsApp",
-    "message": "Hola! Vi tu landing y quiero consultarte sobre un evento."
+    "message": "Hola! Vi tu PressKit Web y quiero consultarte sobre un evento."
   },
   "socials": {
-    "instagram": "https://www.instagram.com/antobravodj_?igsh=MTNtZ2szeDlzeWg3Zw==",
-    "soundcloud": "https://m.soundcloud.com/anto-bravo-240086065"
+    "instagram": "https://www.instagram.com/salvaje_dj?igsh=YnlleTRoY3d6djJs",
+    "soundcloud": "https://soundcloud.com/fabian-aguirre-842759933"
   },
   "destinationEmail": "agubenitez1995@gmail.com",
 
