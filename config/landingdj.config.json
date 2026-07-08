@@ -110,7 +110,7 @@
   ],
   "videosTexts": {
     "sectionTag": "Sets & Sesiones",
-    "heading": "Videos de Presentaciones",
+    "heading": "Videosets en vivo",
     "description": "Siente el ritmo y sintoniza con el espectáculo visual y auditivo de los sets en vivo, transmitidos directamente desde el escenario.",
     "playLabel": "Reproducir video",
     "subtitleLabel": "Presentación Audiovisual Oficial"
@@ -190,7 +190,7 @@
   ],
   "toursTexts": {
     "sectionTag": "Pr\u00f3ximos Shows",
-    "heading": "Fechas de Gira",
+    "heading": "Fechas disponibles",
     "description": "No te pierdas las pr\u00f3ximas presentaciones en vivo.",
     "enVentaLabel": "Conseguir Entradas",
     "finalizadoLabel": "Finalizado",
@@ -258,7 +258,7 @@
     "apiError": "No se pudo registrar la solicitud de contacto.",
     "networkError": "Ocurri\u00f3 un problema de red al intentar transmitir el mensaje.",
     "bullets": [
-      "Soporte técnico y rider incluido",
+      "Soporte técnico y rider disponible",
       "Contrato legal y factura disponible",
       "Respuesta garantizada en 24 horas hábiles"
     ]
