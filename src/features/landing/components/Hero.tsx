@@ -66,41 +66,60 @@ export default function Hero({ hero, artisticName, slogan, heroTexts }: HeroProp
         animate="visible"
         className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8 pt-16"
       >
-        <motion.div
-          variants={itemVariants}
-          className="badge flex items-center gap-2 px-3 py-1"
-        >
-          <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-          <span>{heroTexts?.badge ?? 'Live Experience'}</span>
-        </motion.div>
-
-        <motion.h1
-          variants={itemVariants}
-          className="text-4xl sm:text-6xl md:text-8xl font-black text-[var(--heading-color)] tracking-tight leading-tight font-heading uppercase drop-shadow-2xl break-words max-w-full"
-          style={{ textShadow: '0 0 25px var(--theme-primary)' }}
-        >
-          {artisticName}
-        </motion.h1>
-
-        {slogan.trim().length > 0 && (
-          <motion.p
-            variants={itemVariants}
-            className="text-base sm:text-xl md:text-2xl text-neutral-300 font-medium max-w-2xl px-4 tracking-wide"
-          >
-            {slogan}
-          </motion.p>
-        )}
-
-        {hero.ctaText.trim().length > 0 && (
-          <motion.div variants={itemVariants} className="mt-4 sm:mt-6">
-            <a
-              href="#contacto"
-              aria-label={`Reservar fecha para show con ${artisticName}`}
-              className="btn-primary px-8 py-4 font-extrabold uppercase tracking-[var(--letter-spacing-cta)] text-xs flex items-center gap-2 transition-all duration-300"
+        {hero.layout === 'titles' && hero.titles ? (
+          hero.titles.map((item, i) => (
+            <motion.h1
+              key={i}
+              variants={itemVariants}
+              className={item.className ?? 'font-black text-[var(--heading-color)] tracking-tight leading-tight font-heading uppercase drop-shadow-2xl break-words max-w-full'}
+              style={{
+                fontSize: `var(--hero-title-size-${i + 1})`,
+                color: `color-mix(in srgb, var(--heading-color) calc(var(--hero-title-opacity-${i + 1}) * 100%), transparent)`,
+                textShadow: `var(--hero-title-text-shadow-${i + 1})`,
+              }}
             >
-              <span>{hero.ctaText}</span>
-            </a>
-          </motion.div>
+              {item.text}
+            </motion.h1>
+          ))
+        ) : (
+          <>
+            <motion.div
+              variants={itemVariants}
+              className="badge flex items-center gap-2 px-3 py-1"
+            >
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+              <span>{heroTexts?.badge ?? 'Live Experience'}</span>
+            </motion.div>
+
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl sm:text-6xl md:text-8xl font-black text-[var(--heading-color)] tracking-tight leading-tight font-heading uppercase drop-shadow-2xl break-words max-w-full"
+              style={{ textShadow: '0 0 25px var(--theme-primary)' }}
+            >
+              {artisticName}
+            </motion.h1>
+
+            {slogan.trim().length > 0 && (
+              <motion.p
+                variants={itemVariants}
+                className="text-base sm:text-xl md:text-2xl text-neutral-300 font-medium max-w-2xl px-4 tracking-wide"
+              >
+                {slogan}
+              </motion.p>
+            )}
+
+            {hero.ctaText.trim().length > 0 && (
+              <motion.div variants={itemVariants} className="mt-4 sm:mt-6">
+                <a
+                  href="#contacto"
+                  aria-label={`Reservar fecha para show con ${artisticName}`}
+                  className="btn-primary px-8 py-4 font-extrabold uppercase tracking-[var(--letter-spacing-cta)] text-xs flex items-center gap-2 transition-all duration-300"
+                >
+                  <span>{hero.ctaText}</span>
+                </a>
+              </motion.div>
+            )}
+          </>
         )}
       </motion.div>
 

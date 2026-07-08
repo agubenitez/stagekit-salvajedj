@@ -15,7 +15,14 @@
   "hero": {
     "type": "image",
     "url": "/images/Salvaje2.jpg",
-    "ctaText": "Booking"
+    "ctaText": "Booking",
+    "layout": "titles",
+    "titles": [
+      { "text": "SALVAJE" },
+      { "text": "SALVAJE" },
+      { "text": "SALVAJE" }
+    ],
+    "validHeroLayouts": ["default", "titles"]
   },
   "heroTexts": {
     "badge": "DJ",

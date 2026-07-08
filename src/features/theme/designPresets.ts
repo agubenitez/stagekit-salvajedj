@@ -60,6 +60,15 @@ export interface DesignTokens {
   sectionPaddingY: string;
   sectionHeaderGap: string;
   navbarBlur: string;
+  heroTitleSizeTop: string;
+  heroTitleSizeMiddle: string;
+  heroTitleSizeBottom: string;
+  heroTitleOpacityTop: string;
+  heroTitleOpacityMiddle: string;
+  heroTitleOpacityBottom: string;
+  heroTitleTextShadowTop: string;
+  heroTitleTextShadowMiddle: string;
+  heroTitleTextShadowBottom: string;
 }
 
 export interface DesignPreset {
@@ -149,6 +158,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   neon: {
@@ -223,6 +241,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   slate: {
@@ -297,6 +324,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   frost: {
@@ -371,6 +407,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   sienna: {
@@ -445,6 +490,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   vapor: {
@@ -519,6 +573,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   ember: {
@@ -593,6 +656,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   pearl: {
@@ -667,6 +739,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   barbie: {
@@ -741,6 +822,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   'barbie-dark': {
@@ -815,6 +905,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '12px',
+      heroTitleSizeTop: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeMiddle: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleSizeBottom: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityTop: '1',
+      heroTitleOpacityMiddle: '1',
+      heroTitleOpacityBottom: '1',
+      heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
     },
   },
   'SalvajeDjPreset': {
@@ -889,6 +988,15 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '16px',
+      heroTitleSizeTop: 'clamp(6rem, 14vw, 10rem)',
+      heroTitleSizeMiddle: 'clamp(4rem, 10vw, 7rem)',
+      heroTitleSizeBottom: 'clamp(2.5rem, 6vw, 4.5rem)',
+      heroTitleOpacityTop: '0',
+      heroTitleOpacityMiddle: '0',
+      heroTitleOpacityBottom: '0',
+      heroTitleTextShadowTop: '0 0 15px var(--theme-primary)',
+      heroTitleTextShadowMiddle: '0 0 12px var(--theme-primary)',
+      heroTitleTextShadowBottom: '0 0 10px var(--theme-primary)',
     },
   },
 };

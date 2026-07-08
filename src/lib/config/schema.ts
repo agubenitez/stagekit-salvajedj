@@ -28,10 +28,21 @@ const PublicAssetPathSchema = z
     }
   );
 
+export const HERO_LAYOUTS = ['default', 'titles'] as const;
+export type HeroLayout = typeof HERO_LAYOUTS[number];
+
+export const HeroTitleItemSchema = z.object({
+  text: z.string().min(1, 'El texto del título es obligatorio'),
+  className: z.string().optional(),
+});
+
 export const HeroSchema = z.object({
   type: z.enum(['image', 'video']).optional(),
   url: PublicAssetPathSchema,
   ctaText: z.string(),
+  layout: z.enum(HERO_LAYOUTS).optional(),
+  titles: z.array(HeroTitleItemSchema).length(3).optional(),
+  validHeroLayouts: z.array(z.enum(HERO_LAYOUTS)).optional(),
 });
 
 export const ColorsSchema = z.object({
