@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { type HeroConfig, type HeroTextsConfig } from '@/lib/config/schema';
 import { motion } from 'motion/react';
 import { ChevronDown, Sparkles } from 'lucide-react';
@@ -13,6 +13,17 @@ interface HeroProps {
 }
 
 export default function Hero({ hero, artisticName, slogan, heroTexts }: HeroProps) {
+  const heroRef = useRef<HTMLElement>(null);
+  const [driftAmps, setDriftAmps] = useState([0, 0, 0, 0]);
+
+  useEffect(() => {
+    if (heroRef.current) {
+      const raw = getComputedStyle(heroRef.current).getPropertyValue('--hero-title-drift').trim();
+      const amps = raw ? raw.split(',').map(Number) : [0, 0, 0];
+      setDriftAmps(amps);
+    }
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,6 +47,7 @@ export default function Hero({ hero, artisticName, slogan, heroTexts }: HeroProp
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="relative w-full min-h-screen flex items-center justify-center text-center p-6 md:p-12 overflow-hidden bg-[var(--hero-bg,#000)]"
     >
       <div className="absolute inset-0 z-0">
@@ -64,22 +76,31 @@ export default function Hero({ hero, artisticName, slogan, heroTexts }: HeroProp
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8 pt-16"
+        className={`relative z-10 max-w-4xl mx-auto flex flex-col items-center pt-16 ${
+          hero.layout === 'titles' ? 'gap-8 md:gap-12' : 'gap-6 md:gap-8'
+        }`}
       >
         {hero.layout === 'titles' && hero.titles ? (
-          hero.titles.map((item, i) => (
-            <motion.h1
+          hero.titles.filter(item => item.text.trim().length > 0).map((item, i) => (
+            <motion.div
               key={i}
-              variants={itemVariants}
-              className={item.className ?? 'font-black text-[var(--heading-color)] tracking-tight leading-tight font-heading uppercase drop-shadow-2xl break-words max-w-full'}
-              style={{
-                fontSize: `var(--hero-title-size-${i + 1})`,
-                color: `color-mix(in srgb, var(--heading-color) calc(var(--hero-title-opacity-${i + 1}) * 100%), transparent)`,
-                textShadow: `var(--hero-title-text-shadow-${i + 1})`,
-              }}
+              initial={false}
+              animate={driftAmps[i] > 0 ? { y: [0, -driftAmps[i], driftAmps[i] / 2, -driftAmps[i] * 0.7, 0, driftAmps[i] * 0.4, -driftAmps[i] / 3, 0] } : {}}
+              transition={driftAmps[i] > 0 ? { duration: 9 - i * 2, repeat: Infinity, ease: 'easeInOut', delay: 1 + i * 0.15 } : {}}
+              className="w-full"
             >
-              {item.text}
-            </motion.h1>
+              <motion.h1
+                variants={itemVariants}
+                className={item.className ?? 'font-black text-[var(--heading-color)] tracking-tight leading-tight font-heading uppercase drop-shadow-2xl break-words max-w-full'}
+                style={{
+                  fontSize: `var(--hero-title-size-${i + 1})`,
+                  color: `color-mix(in srgb, var(--heading-color) calc(var(--hero-title-opacity-${i + 1}) * 100%), transparent)`,
+                  textShadow: `var(--hero-title-text-shadow-${i + 1})`,
+                }}
+              >
+                {item.text}
+              </motion.h1>
+            </motion.div>
           ))
         ) : (
           <>

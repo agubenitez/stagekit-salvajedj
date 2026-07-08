@@ -20,6 +20,7 @@
     "titles": [
       { "text": "SALVAJE" },
       { "text": "SALVAJE" },
+      { "text": "SALVAJE" },
       { "text": "SALVAJE" }
     ],
     "validHeroLayouts": ["default", "titles"]

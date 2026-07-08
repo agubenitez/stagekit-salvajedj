@@ -69,6 +69,10 @@ export interface DesignTokens {
   heroTitleTextShadowTop: string;
   heroTitleTextShadowMiddle: string;
   heroTitleTextShadowBottom: string;
+  heroTitleSizeFourth: string;
+  heroTitleOpacityFourth: string;
+  heroTitleTextShadowFourth: string;
+  heroTitleDrift: string;
 }
 
 export interface DesignPreset {
@@ -167,6 +171,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   neon: {
@@ -250,6 +258,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   slate: {
@@ -333,6 +345,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   frost: {
@@ -416,6 +432,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   sienna: {
@@ -499,6 +519,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   vapor: {
@@ -582,6 +606,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   ember: {
@@ -665,6 +693,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   pearl: {
@@ -748,6 +780,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   barbie: {
@@ -831,6 +867,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   'barbie-dark': {
@@ -914,6 +954,10 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowTop: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 25px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 25px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(2rem, 5vw, 4rem)',
+      heroTitleOpacityFourth: '1',
+      heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
+      heroTitleDrift: '0,0,0,0',
     },
   },
   'SalvajeDjPreset': {
@@ -988,15 +1032,19 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       sectionPaddingY: '5rem',
       sectionHeaderGap: '3rem',
       navbarBlur: '16px',
-      heroTitleSizeTop: 'clamp(6rem, 14vw, 10rem)',
-      heroTitleSizeMiddle: 'clamp(4rem, 10vw, 7rem)',
-      heroTitleSizeBottom: 'clamp(2.5rem, 6vw, 4.5rem)',
+      heroTitleSizeTop: 'clamp(7rem, 16vw, 12rem)',
+      heroTitleSizeMiddle: 'clamp(5rem, 12vw, 8rem)',
+      heroTitleSizeBottom: 'clamp(3rem, 8vw, 5rem)',
       heroTitleOpacityTop: '0',
       heroTitleOpacityMiddle: '0',
       heroTitleOpacityBottom: '0',
       heroTitleTextShadowTop: '0 0 15px var(--theme-primary)',
       heroTitleTextShadowMiddle: '0 0 12px var(--theme-primary)',
       heroTitleTextShadowBottom: '0 0 10px var(--theme-primary)',
+      heroTitleSizeFourth: 'clamp(1.5rem, 4vw, 3rem)',
+      heroTitleOpacityFourth: '0',
+      heroTitleTextShadowFourth: '0 0 8px var(--theme-primary)',
+      heroTitleDrift: '30,22,14,8',
     },
   },
 };

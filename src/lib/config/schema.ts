@@ -41,7 +41,7 @@ export const HeroSchema = z.object({
   url: PublicAssetPathSchema,
   ctaText: z.string(),
   layout: z.enum(HERO_LAYOUTS).optional(),
-  titles: z.array(HeroTitleItemSchema).length(3).optional(),
+  titles: z.array(HeroTitleItemSchema).max(4).optional(),
   validHeroLayouts: z.array(z.enum(HERO_LAYOUTS)).optional(),
 });
 
