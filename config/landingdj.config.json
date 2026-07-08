@@ -14,7 +14,7 @@
 
   "hero": {
     "type": "image",
-    "url": "/images/salvaje2.jpg",
+    "url": "/images/salvaje2.JPG",
     "ctaText": "Booking",
     "layout": "titles",
     "titles": [
