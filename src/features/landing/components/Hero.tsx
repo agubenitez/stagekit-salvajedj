@@ -76,7 +76,9 @@ export default function Hero({ hero, artisticName, slogan, heroTexts }: HeroProp
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className={`relative z-10 max-w-4xl mx-auto flex flex-col items-center pt-16 ${
+        className={`relative z-10 max-w-4xl mx-auto flex flex-col items-center ${
+          hero.layout === 'titles' ? 'pt-4' : 'pt-16'
+        } ${
           hero.layout === 'titles' ? 'gap-8 md:gap-12' : 'gap-6 md:gap-8'
         }`}
       >
