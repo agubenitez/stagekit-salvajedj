@@ -58,6 +58,65 @@ No requiere cambios en componentes, CSS, ThemeProvider ni schemas. El nuevo pres
 
 `src/features/theme/designPresets.ts` — leer las interfaces `DesignTokens` y `DesignPreset` primero, luego revisar cualquier preset existente (ej. `gold` o `pearl`) para entender la estructura. Luego `src/features/theme/components/ThemeProvider.tsx` para ver cómo se inyectan.
 
+## 📋 Arquitectura de Tours Dinámicos (Fase 6)
+
+El sistema de tours soporta dos fuentes de datos mediante el toggle `toursSource`:
+
+| Source | Descripción | Archivos de datos |
+|--------|-------------|-------------------|
+| `"static"` | Datos desde el JSON (`config.tours`, `config.tourTable`) | `config/landingdj.config.json` |
+| `"google-sheets"` | Datos desde CSV público de Google Sheets | URL en `toursSheetUrl` |
+
+### Flujo de datos (Google Sheets)
+
+```
+Usuario edita Google Sheet
+        ↓
+    (CSV público publicado)
+        ↓
+  Componente Tours/TourTable
+        ↓  fetch GET /api/tours
+  API Route (/api/tours/route.ts)
+        ↓  fetch URL pública
+  Google CSV
+        ↓  csv-parse/sync
+  Filas individuales
+        ↓  TourEventSchema.safeParse()
+  Array validado + warnings
+        ↓  Response JSON
+  Tours/TourTable → renderizado
+```
+
+### Archivos clave
+
+| Archivo | Rol |
+|---------|-----|
+| `src/lib/tours/cache.ts` | `MemoryCache<T>` con TTL configurable (5 min default). Thread-safe para API Route. |
+| `src/lib/tours/sheetParser.ts` | `fetchToursFromSheet()` — fetch CSV desde URL, parsea con `csv-parse/sync`, itera filas, valida cada una con `TourEventSchema.safeParse()`, loggea warnings para filas inválidas, retorna solo las válidas. |
+| `src/app/api/tours/route.ts` | GET handler que recibe query param `source`, hace switch entre leer del JSON o del sheet. Cachea resultados 5 min. |
+| `src/features/landing/components/Tours.tsx` | Renderiza tours como cards. Si `toursSource: 'google-sheets'`, fetchea de `/api/tours` y muestra skeleton mientras carga. |
+| `src/features/landing/components/TourTable.tsx` | Renderiza tours como tabla. Misma lógica de fetch condicional y skeleton. |
+| `src/features/landing/components/LandingContainer.tsx` | Pasa `toursSource` como prop a Tours y TourTable. |
+
+### Reglas de comportamiento
+
+1. **`toursSource: "static"`** (default) — comportamiento original, lee `config.tours` y `config.tourTable`.
+2. **`toursSource: "google-sheets"`** — ignora `config.tours`/`config.tourTable`, fetchea de API. Si falla, se oculta (sin fallback).
+3. **URL vacía + `google-sheets`** — se oculta (evita errores si no se configuró).
+4. **Filas inválidas** — descartadas con `console.warn` server-side. Solo las válidas se devuelven.
+5. **Caché** — 5 min TTL en memoria de la API Route. No persistente (se pierde al reiniciar el servidor).
+
+### Cómo validar el sheet manualmente
+
+```bash
+curl http://localhost:3000/api/tours
+# → array de eventos válidos o []
+```
+
+### Dependencia externa
+
+- `csv-parse` — única dependencia nueva. Se usa solo server-side (API Route), no impacta el bundle del cliente.
+
 ## 🚦 Próximos Pasos (Opcionales)
 
 1. Incorporar proveedores adicionales (ej. Resend, Brevo o SendGrid) en `src/lib/email/providers/` siguiendo la interfaz `EmailProvider`.

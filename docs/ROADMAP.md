@@ -7,8 +7,8 @@ Este documento establece la progresión del desarrollo de LandingDJ a través de
 ## 🗺️ Resumen de Fases
 
 ```text
-[ Fase 0: Arquitectura ] ──> [ Fase 1: Fundación ] ──> [ Consolidación Técnica ] ──> [ Fase 2: Landing Visual ] ──> [ Fase 3: QA & Pulido V1 ] ──> [ Fase 4: Integración Real ] ──> [ Fase 5: Design Presets ]
-         (Completo)                  (Completo)                 (Completo)                  (Completo)                  (Completo)                  (Completo)                  (Completo)
+[ Fase 0: Arquitectura ] ──> [ Fase 1: Fundación ] ──> [ Consolidación Técnica ] ──> [ Fase 2: Landing Visual ] ──> [ Fase 3: QA & Pulido V1 ] ──> [ Fase 4: Integración Real ] ──> [ Fase 5: Design Presets ] ──> [ Fase 6: Tours Dinámicos ]
+          (Completo)                  (Completo)                  (Completo)                  (Completo)                  (Completo)                  (Completo)                  (Completo)                  (Completo)
 ```
 
 ---
@@ -65,6 +65,18 @@ Este documento establece la progresión del desarrollo de LandingDJ a través de
 - [x] 11 presets completos: `gold` (oscuro/dorado), `neon` (cián/cyberpunk), `slate` (monocromático/radios 0), `pearl` (claro/violeta), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave), `barbie` (hot pink/fondo claro/Playfair Display), `barbie-dark` (hot pink/fondo oscuro/Outfit), `SalvajeDjPreset` (violeta galáctico/Space Grotesk/galaxia minimalista).
 - [x] Documentación actualizada.
 - [x] Verificación de compilación.
+
+### 📦 Fase 6 — Tours Dinámicos vía Google Sheets (COMPLETADO)
+- [x] Cache: `src/lib/tours/cache.ts` con TTL configurable.
+- [x] Sheet parser: `src/lib/tours/sheetParser.ts` — fetch CSV, parseo, validación Zod.
+- [x] API Route: `src/app/api/tours/route.ts` — GET handler con source switch.
+- [x] Schema extendido: `TOURS_SOURCES`, `ToursSource`, `toursSource`, `toursSourceValid`, `toursSheetUrl`.
+- [x] Config JSON: campos `toursSource`, `toursSourceValid`, `toursSheetUrl`.
+- [x] Tours.tsx + TourTable.tsx: fetch condicional, skeleton loading, ocultamiento en falla.
+- [x] LandingContainer.tsx: prop `toursSource` pasada a ambos componentes.
+- [x] Validación de URL: `.optional().or(z.literal(''))` para soportar `""` cuando source es `static`.
+- [x] Dependencia: `csv-parse` instalado.
+- [x] Build verificado.
 
 ### 🔮 Próximos Pasos (Opcionales)
 - [ ] Incorporar proveedores adicionales (Resend, Brevo, SendGrid) en la fábrica de `src/lib/email/providers`.

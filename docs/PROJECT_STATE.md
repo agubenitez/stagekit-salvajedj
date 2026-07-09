@@ -13,6 +13,7 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 - **Fase 3 (QA Visual, Configuración y Pulido V1):** 100% Completado.
 - **Fase 4 (Integración Real de Servicios):** 100% Completado.
 - **Fase 5 (Design Presets y Expansión Visual):** 100% Completado.
+- **Fase 6 (Tours Dinámicos vía Google Sheets):** 100% Completado.
 
 ---
 
@@ -33,7 +34,8 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 ├── src/
 │   ├── app/                   # Next.js App Router (Páginas, Layouts, APIs)
 │   │   ├── api/
-│   │   │   └── contact/       # API Route modular para envíos de leads
+│   │   │   ├── contact/       # API Route modular para envíos de leads
+│   │   │   └── tours/         # API Route para tours dinámicos (Google Sheets)
 │   │   ├── layout.tsx         # Layout raíz (manejo dinámico de Google Fonts)
 │   │   └── page.tsx           # Orquestador del Server Component principal con fallback elegante
 │   ├── features/              # Modularidad basada en características (Features)
@@ -44,7 +46,8 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 │   │       └── components/    # Proveedor de Temas dinámicos (ThemeProvider)
 │   ├── lib/                   # Librerías de utilidades y servicios desacoplados
 │   │   ├── config/            # Carga y validación Zod de configuración
-│   │   └── email/             # Interfaces, proveedores y fábrica de email (SMTP + Placeholder)
+│   │   ├── email/             # Interfaces, proveedores y fábrica de email (SMTP + Placeholder)
+│   │   └── tours/             # Lógica de tours dinámicos (cache + sheet parser)
 │   └── types/                 # Definiciones de tipos TypeScript globales
 ├── package.json
 ├── tsconfig.json
@@ -108,3 +111,17 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 - [x] **Preset light:** `pearl` (violeta/claro/cards blancas), `barbie` (hot pink/claro).
 - [x] **CSS cascade fix:** `ThemeProvider` setea variables directas (`--color-primary`, `--font-heading`) en vez de cadenas `var()` desde `@theme` para evitar fallbacks a valores por defecto.
 - [x] **Documentación actualizada:** `CONFIG_GUIDE.md` (tabla de presets + ejemplos sin `colors`/`typography`), `DECISIONS.md` (ADR 06), `AI_HANDOVER.md` (arquitectura de presets).
+
+### Fase 6 — Tours Dinámicos vía Google Sheets (Completada)
+- [x] **Dependencia:** Instalar `csv-parse` para parseo server-side de CSV.
+- [x] **Sistema de caché:** `src/lib/tours/cache.ts` — clase `MemoryCache<T>` con TTL configurable (5 min).
+- [x] **Sheet parser:** `src/lib/tours/sheetParser.ts` — fetch CSV público, parsea con `csv-parse/sync`, valida filas con `TourEventSchema.safeParse()`, descarta inválidas con warning.
+- [x] **API Route:** `src/app/api/tours/route.ts` — GET handler con source switch (static/google-sheets), caché en memoria, fallback silencioso a `[]`.
+- [x] **Schema extendido:** `TOURS_SOURCES`, `ToursSource`, campos `toursSource`, `toursSourceValid`, `toursSheetUrl` en `LandingConfigSchema`.
+- [x] **Config JSON:** `config/landingdj.config.json` actualizado con `toursSource`, `toursSourceValid`, `toursSheetUrl`.
+- [x] **Tours.tsx reescrito:** Acepta prop `toursSource`, fetch condicional a `/api/tours`, skeleton `ToursSkeleton` con `animate-pulse`, oculta sección si falla o no hay datos.
+- [x] **TourTable.tsx reescrito:** Misma lógica que Tours — prop `toursSource`, fetch condicional, skeleton table loading.
+- [x] **LandingContainer.tsx:** Pasa `toursSource={config.toursSource}` a Tours y TourTable.
+- [x] **Validación de URL:** `toursSheetUrl` acepta `""` vacío cuando source es `static` (`.optional().or(z.literal(''))`).
+- [x] **Build verificado:** `npm run build` sin errores.
+- [x] **Documentación actualizada:** `CONFIG_GUIDE.md` (paso a paso Google Sheets), `DECISIONS.md` (ADR 08), `ROADMAP.md` (Fase 6), `AI_HANDOVER.md` (arquitectura tours), `ActiveTask.md`.

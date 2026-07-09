@@ -89,7 +89,31 @@ Este documento registra las decisiones técnicas y arquitectónicas más importa
   - Todos los componentes fueron migrados de clases hardcodeadas (`text-white`, `bg-black`, `font-extrabold`) a CSS variables.
   - Para crear un preset visualmente coherente, se requiere diseñar los ~56 tokens manualmente (no es una fórmula automática).
 
-### ADR 07 — Alternancia dinámica de fondos de sección
+### ADR 08 — Tours Dinámicos vía Google Sheets (CSV público)
+
+- **Estado**: Aprobado e Implementado.
+- **Contexto**: Los DJs necesitan actualizar sus fechas de shows frecuentemente. Con la fuente `static` (datos en JSON), cada cambio requiere editar el JSON, rebuild y redeploy. El usuario final no debería depender del desarrollador para agregar una fecha.
+- **Decisión**: Agregar un toggle `toursSource` (`"static"` | `"google-sheets"`) en el JSON. Cuando es `"google-sheets"`, los componentes Tours y TourTable hacen fetch a una API Route interna (`/api/tours`) que descarga un CSV público desde Google Sheets, lo parsea con `csv-parse`, valida cada fila con `TourEventSchema.safeParse()`, y devuelve los eventos. Todo el proceso es server-side (API Route), no se expone lógica al cliente.
+- **Justificación**:
+  - **Sin API key ni service account**: Google Sheets permite publicar una hoja como CSV público. No requiere autenticación OAuth, ni credenciales, ni dependencias pesadas.
+  - **Sin deploy para el usuario**: El usuario solo edita la Google Sheet; los cambios se reflejan automáticamente (con TTL de caché de 5 min).
+  - **Validación robusta**: Cada fila se valida con Zod (`safeParse`). Filas inválidas se descartan con warning server-side, sin romper el componente.
+  - **Misma API para ambos componentes**: Tours (cards) y TourTable (tabla) comparten la misma API Route, misma lógica de fetch y mismos types.
+  - **Caché en memoria**: Evita saturar Google con requests en cada carga de página. TTL de 5 minutos.
+  - **Mismo patrón que SECTION_IDS**: `TOURS_SOURCES` + `toursSourceValid` sigue el diseño ya establecido de `SECTION_IDS` + `validSectionIds`.
+- **Alternativas consideradas**:
+  1. **Google Sheets API v4 (oficial)**: Requiere API key expuesta al cliente o proxy server-side con autenticación OAuth. Mucha complejidad para el caso de uso.
+  2. **CMS externo (Sanity, Contentful)**: Overkill para un puñado de eventos. Agrega dependencia externa, costos y latencia.
+  3. **Webhook/CI/CD**: Hacer rebuild automático cuando cambia la sheet. Sigue requiriendo deploy.
+  4. **JSON remoto**: El usuario tendría que mantener un JSON válido manualmente. Mucho más propenso a errores que una planilla.
+- **Consecuencias**:
+  - El JSON incluye tres nuevos campos: `toursSource`, `toursSourceValid`, `toursSheetUrl`.
+  - Se instaló `csv-parse` como dependencia.
+  - Nuevos archivos: `src/lib/tours/cache.ts`, `src/lib/tours/sheetParser.ts`, `src/app/api/tours/route.ts`.
+  - `Tours.tsx` y `TourTable.tsx` fueron reescritos con soporte de source dinámico y skeleton loading.
+  - Cuando `toursSource: "google-sheets"` y el fetch falla o la URL está vacía, la sección se oculta (sin fallback a datos estáticos).
+
+### ADR 09 — Alternancia dinámica de fondos de sección
 
 - **Contexto**: Cada componente de sección tenía su fondo hardcodeado (`bg-[var(--section-bg)]`, `section-bg-alt` o `section-bg-mid`). Al reordenar secciones en el JSON, el patrón de alternancia se rompía porque los bg no seguían el orden dinámico.
 - **Decisión**: Cada sección (excepto hero) lee `var(--section-current-bg)` de un wrapper `<div>` en `LandingContainer.tsx`. El wrapper alterna entre `var(--section-bg)` y `var(--section-bg-alt)` según la posición de la sección en `sectionOrder`, ignorando hero.

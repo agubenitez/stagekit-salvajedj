@@ -31,6 +31,9 @@ const PublicAssetPathSchema = z
 export const HERO_LAYOUTS = ['default', 'titles'] as const;
 export type HeroLayout = typeof HERO_LAYOUTS[number];
 
+export const TOURS_SOURCES = ['static', 'google-sheets'] as const;
+export type ToursSource = typeof TOURS_SOURCES[number];
+
 export const HeroTitleItemSchema = z.object({
   text: z.string().min(1, 'El texto del título es obligatorio'),
   className: z.string().optional(),
@@ -299,6 +302,9 @@ export const LandingConfigSchema = z.object({
   toursTexts: ToursTextsSchema.optional(),
   tourTable: z.array(TourEventSchema).max(20, 'Límite de eventos alcanzado (máximo 20)').optional(),
   tourTableTexts: ToursTextsSchema.optional(),
+  toursSource: z.enum(TOURS_SOURCES).optional().default('static'),
+  toursSourceValid: z.array(z.enum(TOURS_SOURCES)).optional(),
+  toursSheetUrl: z.string().url().optional().or(z.literal('')),
   contactForm: ContactFormSchema,
   navbarTexts: NavbarTextsSchema.optional(),
   contactFormTexts: ContactFormTextsSchema.optional(),

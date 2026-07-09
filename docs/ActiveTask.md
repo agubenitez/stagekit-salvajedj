@@ -1,20 +1,34 @@
-# ActiveTask — Nuevo preset "SalvajeDjPreset"
+# ActiveTask — Tours Dinámicos vía Google Sheets
 
 ## Objetivo
-Crear un preset temático universo/galaxia con tonos violetas intensos, sin bordes luminosos, minimalista y elegante, diseñado exclusivamente para SalvajeDj.
+Implementar sistema de tours dinámicos con toggle `toursSource` (`static` | `google-sheets`) controlado desde `landingdj.config.json`, permitiendo al usuario final actualizar shows editando una Google Sheet sin necesidad de deploy.
 
 ## Estado actual
-- **Completado**: Preset `SalvajeDjPreset` en `designPresets.ts`
-  - Paleta renovada: primary `#7c3aed` (violet-600), secondary `#6366f1` (indigo-500), accent `#c026d3` (fuchsia-600), fondo `#050815`
-  - Tipografía: Space Grotesk (headings) + Inter (body)
-  - Botones con 80% opacity (`btnPrimaryBgAlpha: 0.8`) y sombra con tinte violeta
-  - `cardLeftBorder: 'none'` — sin borde izquierdo en cards
-  - `navbarText: '#c8c4e0'` — texto de navbar visible
-  - `badgeText: '#f0eeff'` + `badgeBg` más opaco — badge del hero visible
-  - Secciones sin alternancia marcada, fondos sutiles
-  - Navbar transparente con blur 16px
+- **Completado**: Sistema completo implementado y build verificado.
+  - `src/lib/tours/cache.ts` — MemoryCache con TTL 5 min
+  - `src/lib/tours/sheetParser.ts` — fetch CSV, parseo, validación Zod, filas inválidas descartadas con warning
+  - `src/app/api/tours/route.ts` — GET handler con source switch + caché
+  - `schema.ts` — `TOURS_SOURCES`, `ToursSource`, `toursSource`, `toursSourceValid`, `toursSheetUrl`
+  - `config/landingdj.config.json` — campos actualizados, `toursSource: "static"` por defecto
+  - `Tours.tsx` — reescrito con skeleton, fetch condicional, ocultamiento en falla
+  - `TourTable.tsx` — reescrito con misma lógica (skeleton, fetch, ocultamiento)
+  - `LandingContainer.tsx` — pasa `toursSource` prop a ambos componentes
+  - `toursSheetUrl` validación: `.optional().or(z.literal(''))` para soportar `""` en modo static
+  - Documentación actualizada: CONFIG_GUIDE, PROJECT_STATE, DECISIONS, ROADMAP, AI_HANDOVER
 
-## Archivos modificados
-- `src/features/theme/designPresets.ts` — nuevo preset + eliminación de gold duplicado
-- `config/landingdj.config.json` — `designPreset` y `validDesignPresets`
-- `docs/ActiveTask.md`, `docs/CONFIG_GUIDE.md`, `docs/ROADMAP.md`, `docs/PROJECT_STATE.md`
+## Archivos modificados/creados
+- `src/lib/tours/cache.ts` — nuevo
+- `src/lib/tours/sheetParser.ts` — nuevo
+- `src/app/api/tours/route.ts` — nuevo
+- `src/lib/config/schema.ts` — +TOURS_SOURCES, +ToursSource, campos tours
+- `config/landingdj.config.json` — +toursSource, toursSourceValid, toursSheetUrl
+- `src/features/landing/components/Tours.tsx` — reescrito
+- `src/features/landing/components/TourTable.tsx` — reescrito
+- `src/features/landing/components/LandingContainer.tsx` — +toursSource prop
+- `docs/CONFIG_GUIDE.md` — +sección 2.17 paso a paso Google Sheets
+- `docs/PROJECT_STATE.md` — +Fase 6
+- `docs/DECISIONS.md` — +ADR 08
+- `docs/ROADMAP.md` — +Fase 6
+- `docs/AI_HANDOVER.md` — +arquitectura tours
+- `docs/ActiveTask.md` — este archivo
+- `package.json` — +csv-parse

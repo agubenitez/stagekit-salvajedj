@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { type TourEventConfig, type ToursTextsConfig } from '@/lib/config/schema';
+import React, { useState, useEffect } from 'react';
+import { type TourEventConfig, type ToursTextsConfig, type ToursSource } from '@/lib/config/schema';
 import { motion } from 'motion/react';
 
 function flagEmoji(countryCode?: string): string | null {
@@ -22,6 +22,7 @@ function formatDate(dateStr: string): string {
 interface TourTableProps {
   tourTable?: TourEventConfig[];
   tourTableTexts?: ToursTextsConfig;
+  toursSource?: ToursSource;
 }
 
 type TicketResult = {
@@ -58,9 +59,68 @@ function getTicketInfo(status: string | undefined, ticketUrl: string | undefined
   }
 }
 
-export default function TourTable({ tourTable, tourTableTexts }: TourTableProps) {
-  if (!tourTable || tourTable.length === 0) return null;
+function TourTableSkeleton() {
+  const tdClass = 'px-4 py-3 md:py-4 text-sm text-[var(--heading-color)] border-b border-[var(--card-border)]';
+  return (
+    <div className="overflow-x-auto animate-pulse">
+      <table className="w-full min-w-[600px]">
+        <tbody>
+          {[1, 2, 3, 4].map((i) => (
+            <tr key={i}>
+              <td className={tdClass}><div className="h-4 w-20 bg-neutral-700 rounded" /></td>
+              <td className={tdClass}><div className="h-4 w-40 bg-neutral-700 rounded" /></td>
+              <td className={tdClass}><div className="h-4 w-32 bg-neutral-700 rounded" /></td>
+              <td className={tdClass}><div className="h-4 w-24 bg-neutral-700 rounded" /></td>
+              <td className={`${tdClass} text-right`}><div className="h-4 w-16 bg-neutral-700 rounded ml-auto" /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
+export default function TourTable({ tourTable, tourTableTexts, toursSource = 'static' }: TourTableProps) {
+  const [dynamicTours, setDynamicTours] = useState<TourEventConfig[] | null>(null);
+  const [loading, setLoading] = useState(toursSource === 'google-sheets');
+
+  useEffect(() => {
+    if (toursSource !== 'google-sheets') return;
+
+    setLoading(true);
+    fetch('/api/tours')
+      .then(res => res.json())
+      .then(data => {
+        setDynamicTours(Array.isArray(data) ? data : []);
+        setLoading(false);
+      })
+      .catch(() => {
+        setDynamicTours([]);
+        setLoading(false);
+      });
+  }, [toursSource]);
+
+  if (toursSource === 'google-sheets') {
+    if (loading) {
+      return (
+        <section className="w-full py-20 px-6 md:px-12 border-b border-[var(--card-border)] bg-[var(--section-current-bg)]">
+          <div className="max-w-[var(--section-max-width)] mx-auto flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
+              <div className="h-4 w-32 bg-neutral-700 rounded animate-pulse" />
+              <div className="h-9 w-64 bg-neutral-700 rounded animate-pulse mt-2" />
+              <div className="h-5 w-96 max-w-full bg-neutral-700 rounded animate-pulse mt-1" />
+            </div>
+            <TourTableSkeleton />
+          </div>
+        </section>
+      );
+    }
+    if (!dynamicTours || dynamicTours.length === 0) return null;
+  } else {
+    if (!tourTable || tourTable.length === 0) return null;
+  }
+
+  const displayTours = toursSource === 'google-sheets' ? dynamicTours! : tourTable!;
   const tt = tourTableTexts ?? {};
 
   const containerVariants = {
@@ -106,7 +166,7 @@ export default function TourTable({ tourTable, tourTableTexts }: TourTableProps)
         >
           <table className="w-full min-w-[600px]">
             <tbody>
-              {tourTable.map((event) => {
+              {displayTours.map((event) => {
                 const flag = flagEmoji(event.countryCode);
                 const ticket = getTicketInfo(event.status, event.ticketUrl, tt);
 

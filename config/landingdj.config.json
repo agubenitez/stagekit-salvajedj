@@ -10,7 +10,10 @@
 
   "sectionMaxWidth": "1500px",
   "validSectionIds": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "music", "faq", "tours", "tour_table", "contact"],
-  "sectionOrder": ["hero","bio_con_foto","music","tours","videos","gallery", "contact"],
+  "sectionOrder": ["hero","bio_con_foto","music","songs","tours","videos","gallery", "contact"],
+  "toursSource": "static",
+  "toursSourceValid": ["static", "google-sheets"],
+  "toursSheetUrl": "",
 
   "hero": {
     "type": "image",

@@ -56,8 +56,8 @@ export default function LandingContainer({ config }: LandingContainerProps) {
     videos: <Videos videos={config.videos} videosTexts={config.videosTexts} />,
     songs: <Songs songs={config.songs} songsTexts={config.songsTexts} />,
     music: <Music songs={config.music} musicTexts={config.musicTexts} soundCloudVisual={config.tokens.musicSoundCloudVisual ?? true} />,
-    tours: <Tours tours={config.tours} toursTexts={config.toursTexts} />,
-    tour_table: <TourTable tourTable={config.tourTable} tourTableTexts={config.tourTableTexts} />,
+    tours: <Tours tours={config.tours} toursTexts={config.toursTexts} toursSource={config.toursSource} />,
+    tour_table: <TourTable tourTable={config.tourTable} tourTableTexts={config.tourTableTexts} toursSource={config.toursSource} />,
     faq: <FAQ faq={config.faq} faqTexts={config.faqTexts} />,
     contact: (
       <Contact

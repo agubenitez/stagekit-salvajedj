@@ -257,7 +257,88 @@ Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings,
 | `seo.keywords` | `string[]` | Sí | Palabras clave para SEO |
 | `seo.ogImage` | `string` (URL) | No | Imagen para Open Graph (compartir en redes) |
 
-### 2.16 Orden de Secciones
+### 2.17 Tours / Eventos con Google Sheets (Dinámico)
+
+El sistema de tours soporta dos fuentes de datos controladas por el toggle `toursSource`:
+
+- **`"static"`** (default): los eventos se definen directamente en el JSON (`tours[]`, `tourTable[]`).
+- **`"google-sheets"`**: los eventos se obtienen en tiempo real desde una Google Sheet pública (CSV). No requiere API key ni service account.
+
+#### Configuración Rápida
+
+| Ruta JSON | Tipo | Obligatorio | Descripción |
+|-----------|------|-------------|-------------|
+| `toursSource` | `"static"` \| `"google-sheets"` | No | Fuente de datos de tours (default: `"static"`) |
+| `toursSourceValid` | `string[]` | No | Lista de fuentes válidas para validación |
+| `toursSheetUrl` | `string` (URL) | Condicional | URL pública CSV de Google Sheets. Obligatoria si `toursSource: "google-sheets"` |
+
+```json
+"toursSource": "static",
+"toursSourceValid": ["static", "google-sheets"],
+"toursSheetUrl": ""
+```
+
+#### Paso a Paso: Usar Google Sheets como Fuente de Tours
+
+**Paso 1 — Crear la Google Sheet**
+
+Creá una planilla en Google Sheets con las siguientes columnas (el orden importa):
+
+| id | date | venue | location | country | countryCode | ticketUrl | status |
+|----|------|-------|----------|---------|-------------|-----------|--------|
+| tour_1 | 2026-08-15 | Club Bahía | Punta del Este | Uruguay | UY | https://tickethub.uy/evento/1 | en_venta |
+| tour_2 | 2026-07-10 | Festival Atlántico | La Paloma | Uruguay | UY | | finalizado |
+| tour_3 | 2026-09-20 | Creamfields | Buenos Aires | Argentina | AR | https://entradas.com/cream | en_venta |
+| tour_4 | 2026-10-05 | W Lounge | Santiago | Chile | CL | | proximamente |
+
+> **Campos opcionales** (pueden dejarse vacíos): `countryCode`, `ticketUrl`, `status`.
+> **Valores válidos para `status`**: `en_venta`, `agotado`, `finalizado`, `proximamente`. Si se omite, se muestra "Próximamente".
+
+**Paso 2 — Publicar la planilla como CSV**
+
+1. En Google Sheets: **Archivo → Compartir → Publicar en web**
+2. Seleccioná la **hoja completa** (no una selección)
+3. Formato: **Valores separados por comas (.csv)**
+4. Click en **"Publicar"**
+5. Copiá la URL generada (ej. `https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv`)
+
+> ⚠️ La planilla debe ser pública (visible para cualquiera con el link). No requiere API key ni autenticación — Google genera un CSV público automáticamente.
+
+**Paso 3 — Configurar el JSON**
+
+```json
+"toursSource": "google-sheets",
+"toursSourceValid": ["static", "google-sheets"],
+"toursSheetUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv"
+```
+
+> Este es un setup **único** que hace el desarrollador. El usuario final solo edita la Google Sheet; los cambios impactan automáticamente sin necesidad de rebuild ni deploy.
+
+**Paso 4 — Verificar**
+
+1. Iniciar el servidor: `npm run dev`
+2. La consola del servidor mostrará warnings si hay filas inválidas en la sheet:
+   ```
+   ⚠️ [tours sheetParser] Fila inválida descartada: { id: 'tour_5', errors: [ ... ] }
+   ```
+3. Si la URL es inválida o el fetch falla, la sección se oculta silenciosamente (sin error visible).
+
+#### Comportamiento General
+
+| Situación | Qué ocurre |
+|-----------|------------|
+| `toursSource: "static"` (default) | Funciona exactamente como antes: lee `tours[]` y `tourTable[]` del JSON |
+| `toursSource: "google-sheets"` + URL válida | Fetch al CSV, parsea, valida y muestra eventos dinámicamente |
+| `toursSource: "google-sheets"` + URL vacía/falla | Sección oculta (no se renderiza). Sin fallback a datos estáticos |
+| Fila inválida en la sheet | Descartada con warning server-side. Filas válidas se muestran normalmente |
+| Sheet vacía o 0 filas válidas | Sección oculta |
+| Cache | Los datos se cachean 5 minutos en memoria para no saturar Google |
+
+#### Cambios sin deploy
+
+Cuando `toursSource: "google-sheets"`, el usuario final solo necesita editar la Google Sheet (agregar/quitar filas, modificar fechas, cambiar estados). Los cambios se reflejan con el TTL de caché (5 minutos). No requiere tocar el JSON, rebuild, ni redeploy.
+
+### 2.18 Orden de Secciones
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
