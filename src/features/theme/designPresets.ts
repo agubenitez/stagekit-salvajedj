@@ -73,6 +73,7 @@ export interface DesignTokens {
   heroTitleOpacityFourth: string;
   heroTitleTextShadowFourth: string;
   heroTitleDrift: string;
+  bioConFotoLayout?: string;
 }
 
 export interface DesignPreset {
@@ -175,6 +176,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   neon: {
@@ -262,6 +264,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   slate: {
@@ -349,6 +352,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   frost: {
@@ -436,6 +440,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   sienna: {
@@ -523,6 +528,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   vapor: {
@@ -610,6 +616,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   ember: {
@@ -697,6 +704,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   pearl: {
@@ -784,6 +792,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   barbie: {
@@ -871,6 +880,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   'barbie-dark': {
@@ -958,6 +968,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '1',
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
+      bioConFotoLayout: 'image-left',
     },
   },
   'SalvajeDjPreset': {
@@ -1045,6 +1056,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleOpacityFourth: '0',
       heroTitleTextShadowFourth: '0 0 8px var(--theme-primary)',
       heroTitleDrift: '30,22,14,8',
+      bioConFotoLayout: 'image-left',
     },
   },
 };

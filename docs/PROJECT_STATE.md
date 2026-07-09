@@ -38,7 +38,7 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 │   │   └── page.tsx           # Orquestador del Server Component principal con fallback elegante
 │   ├── features/              # Modularidad basada en características (Features)
 │   │   ├── landing/
-│   │   │   └── components/    # Componentes de las secciones (Navbar, Hero, Bio, etc.)
+│   │   │   └── components/    # Componentes de las secciones (Navbar, Hero, BioConFoto, Bio, etc.)
 │   │   │       └── IconMapper.tsx # Mapeador dinámico de iconos Lucide React
 │   │   └── theme/
 │   │       └── components/    # Proveedor de Temas dinámicos (ThemeProvider)
@@ -74,6 +74,7 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 - [x] **Navbar Premium:** Menú de navegación interactivo responsivo.
 - [x] **Hero Escénico:** Fondo con gradiente cinemático, animación de textos con motion/react y botón CTA.
 - [x] **Biografía e Trayectoria:** Perfil asimétrico de dos columnas con insignias personalizadas.
+- [x] **BioConFoto:** Sección Split Editorial con imagen en card + texto animado, configurable vía JSON y presets.
 - [x] **Mapeador de Iconos:** Helper `IconMapper.tsx` para traducción segura de strings.
 - [x] **Servicios & Tech Rider:** Renderizado inteligente y condicional de servicios y equipamiento.
 - [x] **Galería de Escenario:** Grilla de imágenes con efecto zoom en hover.

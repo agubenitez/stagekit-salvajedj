@@ -29,6 +29,7 @@ export default function Navbar({ config }: NavbarProps) {
   const nt = config.navbarTexts ?? {};
 
   const sectionNavMap: Record<string, { label: string | undefined; href: string; active: boolean }> = {
+    bio_con_foto: { label: nt.bioConFoto, href: '#bio-con-foto', active: true },
     bio:        { label: nt.bio,        href: '#bio',         active: true },
     services:   { label: nt.services,   href: '#servicios',    active: !!services && services.length > 0 },
     equipment:  { label: nt.equipment,  href: '#equipamiento', active: !!equipment && equipment.length > 0 },

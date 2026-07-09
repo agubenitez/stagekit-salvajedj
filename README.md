@@ -73,6 +73,7 @@ Este proyecto se personaliza íntegramente editando `config/landingdj.config.jso
 | Colores | `colors.primary`, `.secondary`, `.accent`, `.background`, `.text` | Paleta de 5 colores HEX que tiñen toda la interfaz |
 | Tipografía | `typography.heading`, `.body` | Fuentes para títulos y cuerpo (catálogo en `schema.ts`) |
 | Hero | `hero.url`, `.ctaText` | Imagen o video de portada y texto del botón principal |
+| BioConFoto | `bioConFoto.url`, `bioConFotoTexts.*` | Sección de presentación con imagen + texto (Split Editorial) |
 | Servicios | `services[]` | Lista de servicios/productos con título, descripción e icono |
 | Galería | `gallery[]` | Hasta 10 imágenes en grilla responsiva |
 | Videos | `videos[]` | Hasta 10 videos de YouTube con lazy loading |

@@ -4,6 +4,15 @@
 
 ### Added
 
+- **BioConFoto**: Nueva sección de presentación con imagen + texto (Split Editorial).
+  - Configurable vía `bioConFoto` (imagen) y `bioConFotoTexts` (textos) en el JSON.
+  - Layout 50/50: imagen en card-raised a la izquierda, texto con motion a la derecha.
+  - Dirección configurable por preset: `bioConFotoLayout: 'image-left' | 'image-right'`.
+  - Fallback de heading a `artisticName` y description a root `description`.
+  - Nueva sección `bio_con_foto` en `SECTION_IDS`, `sectionOrder`, `navbarTexts`.
+  - Archivos: `schema.ts`, `designPresets.ts`, `ThemeProvider.tsx`, `BioConFoto.tsx` (nuevo), `LandingContainer.tsx`, `Navbar.tsx`, `landingdj.config.json`.
+  - Documentada variante alternativa (BioFondoOverlay) en `improvements.md`.
+
 - **Bio**: Heading ahora configurable desde JSON via `bioTexts.heading`.
   - Si está presente, se usa textual; si no, fallback a `headingPrefix + artisticName`.
   - Agregado `heading` a `BioTextsSchema`.

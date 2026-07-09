@@ -3,6 +3,7 @@ import { type LandingConfig, type SectionId, SECTION_IDS } from '@/lib/config/sc
 import Navbar from './Navbar';
 import Hero from './Hero';
 import Bio from './Bio';
+import BioConFoto from './BioConFoto';
 import Services from './Services';
 import Equipment from './Equipment';
 import Gallery from './Gallery';
@@ -31,6 +32,14 @@ export default function LandingContainer({ config }: LandingContainerProps) {
         artisticName={config.artisticName}
         slogan={config.slogan}
         heroTexts={config.heroTexts}
+      />
+    ),
+    bio_con_foto: (
+      <BioConFoto
+        bioConFoto={config.bioConFoto}
+        artisticName={config.artisticName}
+        description={config.description}
+        bioConFotoTexts={config.bioConFotoTexts}
       />
     ),
     bio: (

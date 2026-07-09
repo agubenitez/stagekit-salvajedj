@@ -9,8 +9,8 @@
   "favicon": "/favicon.ico",
 
   "sectionMaxWidth": "1500px",
-  "validSectionIds": ["hero", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "tours", "tour_table", "contact"],
-  "sectionOrder": ["hero","bio","songs","tours","videos","gallery", "contact"],
+  "validSectionIds": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "tours", "tour_table", "contact"],
+  "sectionOrder": ["hero","bio_con_foto","songs","tours","videos","gallery", "contact"],
 
   "hero": {
     "type": "image",
@@ -28,6 +28,17 @@
   "heroTexts": {
     "badge": "DJ",
     "scrollIndicator": "Descubrir"
+  },
+
+  "bioConFoto": {
+    "type": "image",
+    "url": "/images/salvaje2.JPG",
+    "alt": "Salvaje DJ"
+  },
+  "bioConFotoTexts": {
+    "sectionTag": "Presentación",
+    "heading": "",
+    "description": ""
   },
 
   "bioTexts": {

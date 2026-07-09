@@ -106,6 +106,7 @@ export const ContactFormSchema = z.object({
 
 export const NavbarTextsSchema = z.object({
   bio: z.string().optional(),
+  bioConFoto: z.string().optional(),
   services: z.string().optional(),
   equipment: z.string().optional(),
   gallery: z.string().optional(),
@@ -243,8 +244,21 @@ export const SEOSchema = z.object({
   ogImage: z.string().url().optional(),
 });
 
+export const BioConFotoSchema = z.object({
+  type: z.enum(['image', 'video']).optional(),
+  url: PublicAssetPathSchema,
+  alt: z.string().optional(),
+});
+
+export const BioConFotoTextsSchema = z.object({
+  sectionTag: z.string().optional(),
+  heading: z.string().optional(),
+  description: z.string().optional(),
+});
+
 export const SECTION_IDS = [
   'hero',
+  'bio_con_foto',
   'bio',
   'services',
   'equipment',
@@ -281,6 +295,8 @@ export const LandingConfigSchema = z.object({
   navbarTexts: NavbarTextsSchema.optional(),
   contactFormTexts: ContactFormTextsSchema.optional(),
   heroTexts: HeroTextsSchema.optional(),
+  bioConFoto: BioConFotoSchema,
+  bioConFotoTexts: BioConFotoTextsSchema.optional(),
   bioTexts: BioTextsSchema.optional(),
   servicesTexts: ServicesTextsSchema.optional(),
   faqTexts: FAQTextsSchema.optional(),
@@ -319,6 +335,8 @@ export type ContactFormConfig = z.infer<typeof ContactFormSchema>;
 export type NavbarTextsConfig = z.infer<typeof NavbarTextsSchema>;
 export type ContactFormTextsConfig = z.infer<typeof ContactFormTextsSchema>;
 export type HeroTextsConfig = z.infer<typeof HeroTextsSchema>;
+export type BioConFotoConfig = z.infer<typeof BioConFotoSchema>;
+export type BioConFotoTextsConfig = z.infer<typeof BioConFotoTextsSchema>;
 export type BioTextsConfig = z.infer<typeof BioTextsSchema>;
 export type ServicesTextsConfig = z.infer<typeof ServicesTextsSchema>;
 export type FAQTextsConfig = z.infer<typeof FAQTextsSchema>;

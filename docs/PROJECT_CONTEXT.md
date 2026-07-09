@@ -36,6 +36,7 @@ Para cumplir con la promesa de personalización total, la landing page se compon
 
 - **Navbar**: Cabecera de navegación fluida. Solo muestra enlaces a las secciones que están configuradas y activas.
 - **Hero**: Presentación inicial con soporte para imagen estática o fondo de video en bucle (YouTube o MP4 local/remoto), un slogan impactante y llamadas a la acción (CTAs).
+- **BioConFoto**: Sección de presentación con imagen + texto en formato Split Editorial (50/50), ideal para mostrar una foto profesional junto a una descripción personal.
 - **Descripción (Bio)**: Sección biográfica sobre el DJ con soporte para textos limpios y maquetación elegante.
 - **Servicios**: Lista de servicios ofrecidos (por ejemplo: Bodas, Corporativos, Clubes, Producción Musical) con títulos descripciones.
 - **Equipamiento**: Listado estructurado del hardware de audio, iluminación y efectos especiales que utiliza el artista, categorizado y acompañado de iconos visuales estilizados.

@@ -75,6 +75,8 @@ export default function ThemeProvider({ colors, typography, tokens, sectionMaxWi
     '--hero-title-opacity-4': tokens.heroTitleOpacityFourth,
     '--hero-title-text-shadow-4': tokens.heroTitleTextShadowFourth,
     '--hero-title-drift': tokens.heroTitleDrift,
+    '--bio-con-foto-order-image': tokens.bioConFotoLayout === 'image-right' ? '2' : '1',
+    '--bio-con-foto-order-text': tokens.bioConFotoLayout === 'image-right' ? '1' : '2',
     '--font-weight-heading': tokens.fontWeightHeading,
     '--letter-spacing-tag': tokens.letterSpacingTag,
     '--letter-spacing-cta': tokens.letterSpacingCta,

@@ -19,6 +19,7 @@ Catálogo de mejoras propuestas para aumentar el dinamismo vía JSON y la flexib
 11. [Dark/Light mode configurable](#11-darklight-mode-configurable)
 12. [Secciones custom (bloques genéricos)](#12-secciones-custom-bloques-genéricos)
 13. [Separación del JSON en múltiples archivos](#13-separación-del-json-en-múltiples-archivos-de-configuración)
+14. [Sección BioFondoOverlay](#14-sección-biofondooverlay)
 
 ---
 
@@ -567,12 +568,60 @@ config/
 
 ---
 
+## 14. Sección BioFondoOverlay 🆕
+
+| Prioridad | Esfuerzo | Estado |
+|-----------|----------|--------|
+| 🟡 Media | Bajo | ⏳ Pendiente |
+
+**Problema actual**: No existe una sección de presentación con imagen de fondo a full-width. `BioConFoto` usa layout Split Editorial (50/50), pero algunos artistas prefieren un diseño más dramático donde la imagen ocupa todo el ancho.
+
+**Solución propuesta**: Nueva sección `bio_fondo_overlay` con imagen de fondo a full-width y texto superpuesto en un panel semitransparente con backdrop-blur.
+
+**Estructura conceptual**:
+```
+<section id="bio-fondo-overlay">
+  <img full-width object-cover />
+  <div overlay absolute inset-0 />
+  <div card backdrop-blur centered>
+    <sectionTag />
+    <h2 heading />
+    <divider />
+    <p description />
+  </div>
+</section>
+```
+
+**Config** (comparte esquema con `BioConFoto`):
+```json
+"bioFondoOverlay": {
+  "type": "image",
+  "url": "/images/fondo-presentacion.jpg"
+},
+"bioFondoOverlayTexts": {
+  "sectionTag": "Presentación",
+  "heading": "",
+  "description": ""
+}
+```
+
+**Archivos a modificar**:
+- `src/lib/config/schema.ts` — agregar `bio_fondo_overlay` a `SECTION_IDS`, crear schemas
+- `src/features/landing/components/BioFondoOverlay.tsx` — nuevo componente
+- `src/features/landing/components/LandingContainer.tsx` — registrar
+- `src/features/landing/components/Navbar.tsx` — agregar nav entry
+- `config/landingdj.config.json` — agregar data
+
+**Alternativa**: Unificar con `BioConFoto` usando un token `layout: 'split' | 'overlay'` en el preset, de modo que ambos diseños compartan el mismo schema de datos y solo cambie el renderizado.
+
+---
+
 ## Roadmap sugerido
 
 | Fase | Ideas | Enfoque | Progreso |
 |------|-------|---------|----------|
 | **Fase 1** | 1, 2, 3, 4, 5 | Bajo esfuerzo, alto impacto inmediato en dinamismo | 1/5 ✅ |
-| **Fase 2** | 6, 7, 8, 9, 10 | Nuevas secciones y flexibilidad visual media | 0/5 ⏳ |
+| **Fase 2** | 6, 7, 8, 9, 10, 14 | Nuevas secciones y flexibilidad visual media | 0/6 ⏳ |
 | **Fase 3** | 11, 12, 13 | Alto impacto pero requieren refactor mayor | 0/3 ⏳ |
 
 ---

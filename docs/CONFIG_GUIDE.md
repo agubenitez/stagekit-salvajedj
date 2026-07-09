@@ -80,7 +80,41 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `hero.url` | `string` | Sí | URL de la imagen o video de fondo |
 | `hero.ctaText` | `string` | Sí | Texto del botón de llamada a la acción |
 
-### 2.4 Servicios
+### 2.4 BioConFoto
+
+Sección de presentación con imagen y texto en formato Split Editorial (50/50). La imagen se muestra dentro de una card con estilo premium.
+
+| Ruta JSON | Tipo | Obligatorio | Descripción |
+|-----------|------|-------------|-------------|
+| `bioConFoto.type` | `"image"` \| `"video"` | No | Tipo de contenido multimedia |
+| `bioConFoto.url` | `string` | Sí | URL de la imagen de presentación |
+| `bioConFoto.alt` | `string` | No | Texto alternativo de la imagen |
+| `bioConFotoTexts.sectionTag` | `string` | No | Tag de la sección (ej. "Presentación") |
+| `bioConFotoTexts.heading` | `string` | No | Título. Si se omite, usa `artisticName` |
+| `bioConFotoTexts.description` | `string` | No | Texto descriptivo. Si se omite, usa `description` raíz |
+
+La dirección del layout (imagen a izquierda o derecha) se controla mediante el preset de diseño con el token `bioConFotoLayout: 'image-left' | 'image-right'`.
+
+```json
+"bioConFoto": {
+  "type": "image",
+  "url": "/images/presentacion.jpg",
+  "alt": "Salvaje DJ"
+},
+"bioConFotoTexts": {
+  "sectionTag": "Presentación",
+  "heading": "",
+  "description": ""
+}
+```
+
+| Ruta JSON | Tipo | Obligatorio | Descripción |
+|-----------|------|-------------|-------------|
+| `hero.type` | `"image"` \| `"video"` | No | Tipo de hero. Si se omite, usa `image` |
+| `hero.url` | `string` | Sí | URL de la imagen o video de fondo |
+| `hero.ctaText` | `string` | Sí | Texto del botón de llamada a la acción |
+
+### 2.5 Servicios
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -90,7 +124,7 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `services[].description` | `string` | Sí | Descripción del servicio |
 | `services[].icon` | `string` | Sí | Nombre del icono Lucide React (ej. `music`, `briefcase`, `headphones`) |
 
-### 2.5 Equipamiento
+### 2.6 Equipamiento
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -100,13 +134,13 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `equipment[].category` | `string` | Sí | Categoría (agrupa visualmente) |
 | `equipment[].icon` | `string` | Sí | Icono Lucide React |
 
-### 2.6 Galería
+### 2.7 Galería
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
 | `gallery[]` | `string[]` | No | URLs de imágenes (máx. 10). Pueden ser rutas locales (`/images/...`) o externas |
 
-### 2.7 Videos
+### 2.8 Videos
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -116,7 +150,7 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `videos[].title` | `string` | Sí | Título que se muestra en la grilla |
 | `videos[].thumbnail` | `string` | No | URL de miniatura personalizada. Si se omite, YouTube genera una automáticamente |
 
-### 2.8 Canciones / Tracks
+### 2.9 Canciones / Tracks
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -125,7 +159,7 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `songs[].title` | `string` | Sí | Título de la canción |
 | `songs[].url` | `string` (URL) | Sí | URL a Spotify, Apple Music o SoundCloud |
 
-### 2.9 FAQ
+### 2.10 FAQ
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -134,7 +168,7 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `faq[].question` | `string` | Sí | Pregunta |
 | `faq[].answer` | `string` | Sí | Respuesta |
 
-### 2.10 Redes Sociales
+### 2.11 Redes Sociales
 
 Todos los campos son opcionales. Solo se renderizan los que están presentes.
 
@@ -147,7 +181,7 @@ Todos los campos son opcionales. Solo se renderizan los que están presentes.
 | `socials.tiktok` | `string` (URL) | Link a TikTok |
 | `socials.facebook` | `string` (URL) | Link a Facebook |
 
-### 2.11 Contacto
+### 2.12 Contacto
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -164,14 +198,15 @@ Todos los campos son opcionales. Solo se renderizan los que están presentes.
 
 > *Obligatorio si `whatsapp.enabled` es `true`.
 
-### 2.12 Textos de Secciones
+### 2.13 Textos de Secciones
 
 Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings, placeholders y mensajes sin tocar el código. Todos son opcionales; si se omiten, la sección usa valores por defecto o simplemente no muestra ciertos elementos.
 
 | Objeto | Campos principales |
 |--------|-------------------|
-| `navbarTexts` | `bio`, `services`, `equipment`, `gallery`, `videos`, `faq`, `contact`, `ctaButton` |
+| `navbarTexts` | `bioConFoto`, `bio`, `services`, `equipment`, `gallery`, `videos`, `faq`, `contact`, `ctaButton` |
 | `heroTexts` | `badge`, `scrollIndicator` |
+| `bioConFotoTexts` | `sectionTag`, `heading`, `description` |
 | `bioTexts` | `sectionTag`, `headingPrefix`, `cardTitle`, `badges[]` |
 | `servicesTexts` | `sectionTag`, `heading`, `description` |
 | `equipmentTexts` | `sectionTag`, `heading`, `description` |
@@ -182,7 +217,7 @@ Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings,
 | `contactFormTexts` | `sectionTag`, `nameLabel`, `namePlaceholder`, `emailLabel`, `emailPlaceholder`, `messageLabel`, `messagePlaceholder`, `successTitle`, `sendAnotherButton`, `sendingText`, `bullets[]`, `validationError`, `apiError`, `networkError` |
 | `footerTexts` | `copyrightTemplate` (usa `{{year}}`), `tagline`, `socialLabel`, `creditPrefix`, `creditBrand`, `creditTagline` |
 
-### 2.13 SEO
+### 2.14 SEO
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -191,19 +226,19 @@ Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings,
 | `seo.keywords` | `string[]` | Sí | Palabras clave para SEO |
 | `seo.ogImage` | `string` (URL) | No | Imagen para Open Graph (compartir en redes) |
 
-### 2.14 Orden de Secciones
+### 2.15 Orden de Secciones
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
 | `sectionOrder` | `string[]` | No | Define el orden de renderizado de las secciones. Si se omite, se usa el orden por defecto. Secciones no listadas no se renderizan. |
 
-Valores permitidos: `hero`, `bio`, `services`, `equipment`, `gallery`, `videos`, `songs`, `faq`, `contact`.
+Valores permitidos: `hero`, `bio_con_foto`, `bio`, `services`, `equipment`, `gallery`, `videos`, `songs`, `faq`, `tour_table`, `tours`, `contact`.
 
 ```json
 "sectionOrder": ["hero", "contact", "services", "faq"]
 ```
 
-> Las secciones `hero`, `bio`, `services`, `equipment`, `gallery`, `videos`, `songs`, `faq` y `contact` siguen siendo opcionales por su propia lógica interna (datos ausentes = no renderizado). Este campo solo controla el orden de las que están activas.
+> Las secciones siguen siendo opcionales por su propia lógica interna (datos ausentes = no renderizado). Este campo solo controla el orden de las que están activas.
 
 ---
 
@@ -246,7 +281,7 @@ Este ejemplo muestra cómo transformar la landing actual de un DJ en una landing
   "confirmationPopupText": "Tu solicitud ha sido registrada exitosamente.",
   "destinationEmail": "booking@alexisverdi.com",
   "whatsapp": { "enabled": true, "phoneNumber": "59897973677", "buttonText": "Contáctanos por WhatsApp", "message": "Hola! Vi tu landing y quiero consultarte sobre un evento." },
-  "sectionOrder": ["hero", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "contact"],
+  "sectionOrder": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "contact"],
   "seo": {
     "title": "Anto Bravo | DJ & Productor de Eventos de Lujo",
     "description": "DJ profesional internacional experto en bodas de alta gama...",
@@ -315,7 +350,7 @@ Este ejemplo muestra cómo transformar la landing actual de un DJ en una landing
     "buttonText": "Chateá por WhatsApp",
     "message": "Hola! Vi BeatForge Presets y quiero consultar sobre los packs."
   },
-  "sectionOrder": ["hero", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "contact"],
+  "sectionOrder": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "contact"],
   "seo": {
     "title": "BeatForge Presets | Packs de Sonidos para DJs y Productores",
     "description": "Packs de presets profesionales para Tech House, Melodic House y Deep House. Compatibles con Serum, Ableton Live y FL Studio. Descarga inmediata.",
