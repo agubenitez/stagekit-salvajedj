@@ -37,6 +37,17 @@
   - Botón primary hot pink sólido, texto blanco. Tipografía Outfit + Inter.
   - Archivo: `src/features/theme/designPresets.ts`
 
+- **Music**: Nueva sección `music` en la landing page con tracks embedidos.
+  - Propio `musicTexts` (sectionTag, heading, description) y `music` array de canciones (mismo formato que `songs`).
+  - SoundCloud tracks renderizan con `visual=true` (full-bleed artwork, 450px height, sin padding) cuando el token `musicSoundCloudVisual` es true (default).
+  - Apple Music tracks renderizan con `&theme=dark` para fondo oscuro.
+  - Spotify tracks renderizan como antes (ya son dark).
+  - Grid usa `items-start` para alturas mixtas.
+  - Nuevo design token `musicSoundCloudVisual` (boolean, default true) en DesignTokens y todos los presets.
+  - Nueva CSS var `--music-sc-visual` en ThemeProvider.
+  - Section id es `music`, href es `#music`.
+  - Archivos: `schema.ts`, `designPresets.ts`, `ThemeProvider.tsx`, `Music.tsx` (nuevo), `LandingContainer.tsx`, `Navbar.tsx`, `landingdj.config.json`.
+
 ### Changed
 
 - **Hero**: Revertido degradado espejo superior (Alternativa A). No gustó el resultado.

@@ -13,6 +13,7 @@ import Tours from './Tours';
 import TourTable from './TourTable';
 import Contact from './Contact';
 import Songs from './Songs';
+import Music from './Music';
 import Footer from './Footer';
 import ThemeProvider from '@/features/theme/components/ThemeProvider';
 
@@ -54,6 +55,7 @@ export default function LandingContainer({ config }: LandingContainerProps) {
     gallery: <Gallery gallery={config.gallery} galleryTexts={config.galleryTexts} />,
     videos: <Videos videos={config.videos} videosTexts={config.videosTexts} />,
     songs: <Songs songs={config.songs} songsTexts={config.songsTexts} />,
+    music: <Music songs={config.music} musicTexts={config.musicTexts} soundCloudVisual={config.tokens.musicSoundCloudVisual ?? true} />,
     tours: <Tours tours={config.tours} toursTexts={config.toursTexts} />,
     tour_table: <TourTable tourTable={config.tourTable} tourTableTexts={config.tourTableTexts} />,
     faq: <FAQ faq={config.faq} faqTexts={config.faqTexts} />,

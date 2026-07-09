@@ -9,8 +9,8 @@
   "favicon": "/favicon.ico",
 
   "sectionMaxWidth": "1500px",
-  "validSectionIds": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "faq", "tours", "tour_table", "contact"],
-  "sectionOrder": ["hero","bio_con_foto","songs","tours","videos","gallery", "contact"],
+  "validSectionIds": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "music", "faq", "tours", "tour_table", "contact"],
+  "sectionOrder": ["hero","bio_con_foto","music","tours","videos","gallery", "contact"],
 
   "hero": {
     "type": "image",
@@ -146,6 +146,24 @@
     "description": " "
   },
 
+  "music": [
+    {
+      "id": "music_1",
+      "title": "Starlight (Original Mix)",
+      "url": "https://soundcloud.com/fabian-aguirre-842759933/salvaje-set-garden"
+    },
+    {
+      "id": "music_2",
+      "title": "Live at Club",
+      "url": "https://soundcloud.com/fabian-aguirre-842759933/set-psytrance-popper"
+    }
+  ],
+  "musicTexts": {
+    "sectionTag": "Mix & Sessions",
+    "heading": "Music",
+    "description": " "
+  },
+
   "faq": [
     {
       "id": "faq_1",
@@ -277,11 +295,13 @@
 
   "navbarTexts": {
     "bio": "Bio",
+    "bioConFoto": "Bio",
     "services": "Servicios",
     "equipment": "Equipamiento",
     "gallery": "Gallery",
     "videos": "Sets Lives",
     "songs": "Music",
+    "music": "Music",
     "faq": "Preguntas",
     "tours": "Date tours",
     "tourTable": "Date tours",

@@ -112,6 +112,7 @@ export const NavbarTextsSchema = z.object({
   gallery: z.string().optional(),
   videos: z.string().optional(),
   songs: z.string().optional(),
+  music: z.string().optional(),
   faq: z.string().optional(),
   tours: z.string().optional(),
   tourTable: z.string().optional(),
@@ -209,6 +210,12 @@ export const SongsTextsSchema = z.object({
   description: z.string().optional(),
 });
 
+export const MusicTextsSchema = z.object({
+  sectionTag: z.string().optional(),
+  heading: z.string().optional(),
+  description: z.string().optional(),
+});
+
 export const TourEventSchema = z.object({
   id: z.string().min(1),
   date: z.string().min(1, 'La fecha del evento es obligatoria'),
@@ -265,6 +272,7 @@ export const SECTION_IDS = [
   'gallery',
   'videos',
   'songs',
+  'music',
   'faq',
   'tours',
   'tour_table',
@@ -302,6 +310,8 @@ export const LandingConfigSchema = z.object({
   faqTexts: FAQTextsSchema.optional(),
   songs: z.array(SongSchema).max(10, 'Límite de canciones alcanzado (máximo 10)').optional(),
   songsTexts: SongsTextsSchema.optional(),
+  music: z.array(SongSchema).max(10, 'Límite de canciones alcanzado (máximo 10)').optional(),
+  musicTexts: MusicTextsSchema.optional(),
   equipmentTexts: EquipmentTextsSchema.optional(),
   galleryTexts: GalleryTextsSchema.optional(),
   videosTexts: VideosTextsSchema.optional(),
@@ -343,6 +353,7 @@ export type FAQTextsConfig = z.infer<typeof FAQTextsSchema>;
 export type FooterTextsConfig = z.infer<typeof FooterTextsSchema>;
 export type SongConfig = z.infer<typeof SongSchema>;
 export type SongsTextsConfig = z.infer<typeof SongsTextsSchema>;
+export type MusicTextsConfig = z.infer<typeof MusicTextsSchema>;
 export type TourEventConfig = z.infer<typeof TourEventSchema>;
 export type ToursTextsConfig = z.infer<typeof ToursTextsSchema>;
 export type EquipmentTextsConfig = z.infer<typeof EquipmentTextsSchema>;

@@ -159,7 +159,37 @@ La dirección del layout (imagen a izquierda o derecha) se controla mediante el 
 | `songs[].title` | `string` | Sí | Título de la canción |
 | `songs[].url` | `string` (URL) | Sí | URL a Spotify, Apple Music o SoundCloud |
 
-### 2.10 FAQ
+### 2.10 Music
+
+Sección de tracks embedidos desde SoundCloud, Spotify y Apple Music. Comparte el mismo formato de datos que `songs[]`.
+
+| Ruta JSON | Tipo | Obligatorio | Descripción |
+|-----------|------|-------------|-------------|
+| `music[]` | `array` | No | Lista de canciones (máx. 10) |
+| `music[].id` | `string` | Sí | Identificador único |
+| `music[].title` | `string` | Sí | Título de la canción |
+| `music[].url` | `string` (URL) | Sí | URL a Spotify, Apple Music o SoundCloud |
+
+**Comportamiento por plataforma:**
+- **SoundCloud**: Renderiza con `visual=true` (full-bleed artwork, 450px height) cuando el token `musicSoundCloudVisual` está habilitado (default en todos los presets). Si se deshabilita, usa el embed compacto estándar (166px).
+- **Apple Music**: Renderiza con `&theme=dark` para fondo oscuro.
+- **Spotify**: Renderiza igual que en la sección `songs` (ya es dark por defecto).
+
+El token `musicSoundCloudVisual` se configura en los design presets y se expone como CSS var `--music-sc-visual`.
+
+```json
+"music": [
+  { "id": "music_1", "title": "Starlight (Original Mix)", "url": "https://soundcloud.com/user/starlight" },
+  { "id": "music_2", "title": "Live at Club", "url": "https://music.apple.com/us/album/live-set" }
+],
+"musicTexts": {
+  "sectionTag": "Mix & Sessions",
+  "heading": "Sets en Vivo",
+  "description": "Sesiones completas y mixes grabados en vivo."
+}
+```
+
+### 2.11 FAQ
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -168,7 +198,7 @@ La dirección del layout (imagen a izquierda o derecha) se controla mediante el 
 | `faq[].question` | `string` | Sí | Pregunta |
 | `faq[].answer` | `string` | Sí | Respuesta |
 
-### 2.11 Redes Sociales
+### 2.12 Redes Sociales
 
 Todos los campos son opcionales. Solo se renderizan los que están presentes.
 
@@ -181,7 +211,7 @@ Todos los campos son opcionales. Solo se renderizan los que están presentes.
 | `socials.tiktok` | `string` (URL) | Link a TikTok |
 | `socials.facebook` | `string` (URL) | Link a Facebook |
 
-### 2.12 Contacto
+### 2.13 Contacto
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -198,13 +228,13 @@ Todos los campos son opcionales. Solo se renderizan los que están presentes.
 
 > *Obligatorio si `whatsapp.enabled` es `true`.
 
-### 2.13 Textos de Secciones
+### 2.14 Textos de Secciones
 
 Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings, placeholders y mensajes sin tocar el código. Todos son opcionales; si se omiten, la sección usa valores por defecto o simplemente no muestra ciertos elementos.
 
 | Objeto | Campos principales |
 |--------|-------------------|
-| `navbarTexts` | `bioConFoto`, `bio`, `services`, `equipment`, `gallery`, `videos`, `faq`, `contact`, `ctaButton` |
+| `navbarTexts` | `bioConFoto`, `bio`, `services`, `equipment`, `gallery`, `videos`, `songs`, `music`, `faq`, `contact`, `ctaButton` |
 | `heroTexts` | `badge`, `scrollIndicator` |
 | `bioConFotoTexts` | `sectionTag`, `heading`, `description` |
 | `bioTexts` | `sectionTag`, `headingPrefix`, `cardTitle`, `badges[]` |
@@ -213,11 +243,12 @@ Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings,
 | `galleryTexts` | `sectionTag`, `heading`, `description`, `overlayLabel` |
 | `videosTexts` | `sectionTag`, `heading`, `description`, `playLabel`, `subtitleLabel` |
 | `songsTexts` | `sectionTag`, `heading`, `description` |
+| `musicTexts` | `sectionTag`, `heading`, `description` |
 | `faqTexts` | `sectionTag`, `heading`, `description` |
 | `contactFormTexts` | `sectionTag`, `nameLabel`, `namePlaceholder`, `emailLabel`, `emailPlaceholder`, `messageLabel`, `messagePlaceholder`, `successTitle`, `sendAnotherButton`, `sendingText`, `bullets[]`, `validationError`, `apiError`, `networkError` |
 | `footerTexts` | `copyrightTemplate` (usa `{{year}}`), `tagline`, `socialLabel`, `creditPrefix`, `creditBrand`, `creditTagline` |
 
-### 2.14 SEO
+### 2.15 SEO
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -226,13 +257,13 @@ Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings,
 | `seo.keywords` | `string[]` | Sí | Palabras clave para SEO |
 | `seo.ogImage` | `string` (URL) | No | Imagen para Open Graph (compartir en redes) |
 
-### 2.15 Orden de Secciones
+### 2.16 Orden de Secciones
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
 | `sectionOrder` | `string[]` | No | Define el orden de renderizado de las secciones. Si se omite, se usa el orden por defecto. Secciones no listadas no se renderizan. |
 
-Valores permitidos: `hero`, `bio_con_foto`, `bio`, `services`, `equipment`, `gallery`, `videos`, `songs`, `faq`, `tour_table`, `tours`, `contact`.
+Valores permitidos: `hero`, `bio_con_foto`, `bio`, `services`, `equipment`, `gallery`, `videos`, `songs`, `music`, `faq`, `tour_table`, `tours`, `contact`.
 
 ```json
 "sectionOrder": ["hero", "contact", "services", "faq"]

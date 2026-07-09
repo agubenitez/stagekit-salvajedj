@@ -77,6 +77,7 @@ export default function ThemeProvider({ colors, typography, tokens, sectionMaxWi
     '--hero-title-drift': tokens.heroTitleDrift,
     '--bio-con-foto-order-image': tokens.bioConFotoLayout === 'image-right' ? '2' : '1',
     '--bio-con-foto-order-text': tokens.bioConFotoLayout === 'image-right' ? '1' : '2',
+    '--music-sc-visual': tokens.musicSoundCloudVisual ? '1' : '0',
     '--font-weight-heading': tokens.fontWeightHeading,
     '--letter-spacing-tag': tokens.letterSpacingTag,
     '--letter-spacing-cta': tokens.letterSpacingCta,

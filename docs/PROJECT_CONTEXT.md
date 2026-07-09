@@ -42,6 +42,7 @@ Para cumplir con la promesa de personalización total, la landing page se compon
 - **Equipamiento**: Listado estructurado del hardware de audio, iluminación y efectos especiales que utiliza el artista, categorizado y acompañado de iconos visuales estilizados.
 - **Galería de Imágenes**: Carrusel o grilla bento de hasta 10 fotos optimizadas del artista en acción.
 - **Galería de Videos**: Grilla de videos de YouTube integrados de forma ligera (lazy load) con soporte para hasta 10 videos.
+- **Music**: Sección de tracks embedidos desde SoundCloud, Spotify y Apple Music con soporte para visual mode full-bleed en SoundCloud (`musicSoundCloudVisual`) y tema oscuro en Apple Music.
 - **Redes Sociales**: Enlaces optimizados a plataformas (Instagram, SoundCloud, Spotify, Facebook, TikTok, etc.).
 - **FAQs (Preguntas Frecuentes)**: Acordeón interactivo con hasta 10 preguntas y respuestas clave.
 - **Formulario de Contacto**: Formulario limpio (Nombre, Email, Mensaje) acoplado a un servicio de envío de email desacoplado y seguro, con popup de confirmación dinámico.

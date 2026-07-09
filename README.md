@@ -77,6 +77,7 @@ Este proyecto se personaliza íntegramente editando `config/landingdj.config.jso
 | Servicios | `services[]` | Lista de servicios/productos con título, descripción e icono |
 | Galería | `gallery[]` | Hasta 10 imágenes en grilla responsiva |
 | Videos | `videos[]` | Hasta 10 videos de YouTube con lazy loading |
+| Music | `music[]`, `musicTexts.*`, `musicSoundCloudVisual` | Tracks embedidos (SoundCloud, Spotify, Apple Music) con visual mode para SoundCloud |
 | FAQ | `faq[]` | Hasta 10 preguntas frecuentes con acordeón |
 | Redes Sociales | `socials.*` | Links a Instagram, SoundCloud, Spotify, etc. |
 | Contacto | `contactForm`, `destinationEmail`, `whatsapp` | Formulario, email destino, WhatsApp |

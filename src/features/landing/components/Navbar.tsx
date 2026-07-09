@@ -10,7 +10,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ config }: NavbarProps) {
-  const { artisticName, services, equipment, gallery, videos, songs, tours, tourTable, faq, contactForm } = config;
+  const { artisticName, services, equipment, gallery, videos, songs, music, tours, tourTable, faq, contactForm } = config;
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -36,6 +36,7 @@ export default function Navbar({ config }: NavbarProps) {
     gallery:    { label: nt.gallery,    href: '#galeria',      active: !!gallery && gallery.length > 0 },
     videos:     { label: nt.videos,     href: '#videos',       active: !!videos && videos.length > 0 },
     songs:      { label: nt.songs,      href: '#canciones',    active: !!songs && songs.length > 0 },
+    music:      { label: nt.music,      href: '#music',        active: !!music && music.length > 0 },
     faq:        { label: nt.faq,        href: '#faq',          active: !!faq && faq.length > 0 },
     tours:      { label: nt.tours,      href: '#tours',        active: !!tours && tours.length > 0 },
     tour_table: { label: nt.tourTable,  href: '#tour-table',   active: !!tourTable && tourTable.length > 0 },

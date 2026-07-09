@@ -74,6 +74,7 @@ export interface DesignTokens {
   heroTitleTextShadowFourth: string;
   heroTitleDrift: string;
   bioConFotoLayout?: string;
+  musicSoundCloudVisual?: boolean;
 }
 
 export interface DesignPreset {
@@ -177,6 +178,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   neon: {
@@ -265,6 +267,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   slate: {
@@ -353,6 +356,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   frost: {
@@ -441,6 +445,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   sienna: {
@@ -529,6 +534,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   vapor: {
@@ -617,6 +623,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   ember: {
@@ -705,6 +712,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   pearl: {
@@ -793,6 +801,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   barbie: {
@@ -881,6 +890,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   'barbie-dark': {
@@ -969,6 +979,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 25px var(--theme-primary)',
       heroTitleDrift: '0,0,0,0',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
   'SalvajeDjPreset': {
@@ -1057,6 +1068,7 @@ export const DESIGN_PRESETS: Record<string, DesignPreset> = {
       heroTitleTextShadowFourth: '0 0 8px var(--theme-primary)',
       heroTitleDrift: '30,22,14,8',
       bioConFotoLayout: 'image-left',
+      musicSoundCloudVisual: true,
     },
   },
 };

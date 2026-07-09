@@ -79,6 +79,7 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 - [x] **Servicios & Tech Rider:** Renderizado inteligente y condicional de servicios y equipamiento.
 - [x] **Galería de Escenario:** Grilla de imágenes con efecto zoom en hover.
 - [x] **Videos Interactivos:** Reproducción de YouTube (in-place) que evita la carga de iframes hasta interacción.
+- [x] **Music (Música):** Sección de tracks embedidos con soporte para SoundCloud (visual mode full-bleed configurable vía token `musicSoundCloudVisual`), Spotify y Apple Music (`&theme=dark`). Grid responsivo con `items-start` para alturas mixtas.
 - [x] **Preguntas Frecuentes:** Acordeón con animaciones de apertura y cierre fluidas.
 - [x] **Formulario de Contacto:** Gestión de leads e interactividad multiestado (idle, enviando, éxito, error).
 
