@@ -96,10 +96,10 @@ Este documento registra las decisiones técnicas y arquitectónicas más importa
 - **Decisión**: Agregar un toggle `toursSource` (`"static"` | `"google-sheets"`) en el JSON. Cuando es `"google-sheets"`, los componentes Tours y TourTable hacen fetch a una API Route interna (`/api/tours`) que descarga un CSV público desde Google Sheets, lo parsea con `csv-parse`, valida cada fila con `TourEventSchema.safeParse()`, y devuelve los eventos. Todo el proceso es server-side (API Route), no se expone lógica al cliente.
 - **Justificación**:
   - **Sin API key ni service account**: Google Sheets permite publicar una hoja como CSV público. No requiere autenticación OAuth, ni credenciales, ni dependencias pesadas.
-  - **Sin deploy para el usuario**: El usuario solo edita la Google Sheet; los cambios se reflejan automáticamente (con TTL de caché de 5 min).
+  - **Sin deploy para el usuario**: El usuario solo edita la Google Sheet; los cambios se reflejan automáticamente (con TTL de caché de 30 seg).
   - **Validación robusta**: Cada fila se valida con Zod (`safeParse`). Filas inválidas se descartan con warning server-side, sin romper el componente.
   - **Misma API para ambos componentes**: Tours (cards) y TourTable (tabla) comparten la misma API Route, misma lógica de fetch y mismos types.
-  - **Caché en memoria**: Evita saturar Google con requests en cada carga de página. TTL de 5 minutos.
+  - **Caché en memoria**: Evita saturar Google con requests en cada carga de página. TTL de 30 segundos.
   - **Mismo patrón que SECTION_IDS**: `TOURS_SOURCES` + `toursSourceValid` sigue el diseño ya establecido de `SECTION_IDS` + `validSectionIds`.
 - **Alternativas consideradas**:
   1. **Google Sheets API v4 (oficial)**: Requiere API key expuesta al cliente o proxy server-side con autenticación OAuth. Mucha complejidad para el caso de uso.
@@ -124,3 +124,25 @@ Este documento registra las decisiones técnicas y arquitectónicas más importa
 - **Consecuencias**:
   - 10 componentes de sección reemplazaron su bg hardcodeado por `bg-[var(--section-current-bg)]`.
   - `LandingContainer.tsx` calcula el bg basado en índice par/impar.
+
+### ADR 10 — Renderizado dinámico forzado y paginación de tours
+
+- **Estado**: Implementado.
+- **Contexto**: La página principal (`page.tsx`) no exportaba indicadores de rendering, por lo que Next.js 15 la trataba como estática (SSG). Los cambios en el JSON o en Google Sheets no se reflejaban hasta reiniciar el servidor o redeployar. Además, la sección de tours mostraba todos los eventos de golpe, lo que era visualmente pesado con muchos shows.
+- **Decisión**:
+  1. Agregar `export const dynamic = 'force-dynamic'` en `page.tsx` para forzar SSR en cada request.
+  2. Reducir el TTL del `MemoryCache` de tours de 5 minutos a 30 segundos.
+  3. Implementar paginación incremental en `Tours.tsx` y `TourTable.tsx`: mostrar los primeros 6 eventos con un botón "Mostrar más" que expone de a 3 adicionales.
+- **Justificación**:
+  - `force-dynamic` garantiza que `getLandingConfig()` lea el JSON fresco del disco en cada request, eliminando la necesidad de reiniciar para ver cambios.
+  - El TTL de 30 seg balancea performance (evita saturar Google) con actualizaciones casi inmediatas para el usuario que edita la Google Sheet.
+  - La paginación mejora la UX: la sección no se extiende excesivamente con muchos eventos, y el usuario controla cuántos ve.
+- **Alternativas consideradas**:
+  1. **ISR (`revalidate: 60`)**: Revalidación periódica, pero los datos se seguirían sirviendo stale entre revalidaciones. Menos inmediato que `force-dynamic`.
+  2. **Eliminar caché por completo**: Simplificar el código pero saturaría Google con un request por carga de página.
+  3. **Paginación server-side**: Más complejo (requiere state en la URL o parámetros de query), innecesario para un número pequeño de eventos.
+- **Consecuencias**:
+  - `page.tsx` exporta `dynamic = 'force-dynamic'`.
+  - `cache.ts` tiene TTL de 30s por defecto.
+  - `Tours.tsx` y `TourTable.tsx` exportan constantes `INITIAL_VISIBLE=6` y `LOAD_MORE_STEP=3`, con estado `visibleCount` y botón condicional.
+  - Se eliminó el problema de datos stale que requería reiniciar el servidor.

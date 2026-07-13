@@ -114,14 +114,17 @@ Este documento mantiene un registro en tiempo real de la implementación técnic
 
 ### Fase 6 — Tours Dinámicos vía Google Sheets (Completada)
 - [x] **Dependencia:** Instalar `csv-parse` para parseo server-side de CSV.
-- [x] **Sistema de caché:** `src/lib/tours/cache.ts` — clase `MemoryCache<T>` con TTL configurable (5 min).
-- [x] **Sheet parser:** `src/lib/tours/sheetParser.ts` — fetch CSV público, parsea con `csv-parse/sync`, valida filas con `TourEventSchema.safeParse()`, descarta inválidas con warning.
+- [x] **Sistema de caché:** `src/lib/tours/cache.ts` — clase `MemoryCache<T>` con TTL configurable (30 seg).
+- [x] **Sheet parser:** `src/lib/tours/sheetParser.ts` — fetch CSV público, parsea con `csv-parse/sync`, valida filas con `TourEventSchema.safeParse()`, descarta inválidas con warning. Limpieza de BOM y detección de respuestas HTML.
 - [x] **API Route:** `src/app/api/tours/route.ts` — GET handler con source switch (static/google-sheets), caché en memoria, fallback silencioso a `[]`.
-- [x] **Schema extendido:** `TOURS_SOURCES`, `ToursSource`, campos `toursSource`, `toursSourceValid`, `toursSheetUrl` en `LandingConfigSchema`.
+- [x] **Schema extendido:** `TOURS_SOURCES`, `ToursSource`, campos `toursSource`, `toursSourceValid`, `toursSheetUrl`.
 - [x] **Config JSON:** `config/landingdj.config.json` actualizado con `toursSource`, `toursSourceValid`, `toursSheetUrl`.
-- [x] **Tours.tsx reescrito:** Acepta prop `toursSource`, fetch condicional a `/api/tours`, skeleton `ToursSkeleton` con `animate-pulse`, oculta sección si falla o no hay datos.
-- [x] **TourTable.tsx reescrito:** Misma lógica que Tours — prop `toursSource`, fetch condicional, skeleton table loading.
+- [x] **Tours.tsx reescrito:** Acepta prop `toursSource`, fetch condicional a `/api/tours`, skeleton `ToursSkeleton` con `animate-pulse`, oculta sección si falla o no hay datos. Paginación: 6 iniciales, botón "Mostrar más" de a 3.
+- [x] **TourTable.tsx reescrito:** Misma lógica que Tours — prop `toursSource`, fetch condicional, skeleton table loading, paginación idéntica.
 - [x] **LandingContainer.tsx:** Pasa `toursSource={config.toursSource}` a Tours y TourTable.
 - [x] **Validación de URL:** `toursSheetUrl` acepta `""` vacío cuando source es `static` (`.optional().or(z.literal(''))`).
+- [x] **Renderizado dinámico:** `page.tsx` exporta `dynamic = 'force-dynamic'` para forzar SSR en cada request.
+- [x] **Caché reducido:** TTL de 30 seg (antes 5 min) para actualizaciones casi inmediatas.
+- [x] **Parser robustecido:** Limpieza de BOM, detección de respuestas HTML, logging de diagnóstico con primeros 200 caracteres.
 - [x] **Build verificado:** `npm run build` sin errores.
-- [x] **Documentación actualizada:** `CONFIG_GUIDE.md` (paso a paso Google Sheets), `DECISIONS.md` (ADR 08), `ROADMAP.md` (Fase 6), `AI_HANDOVER.md` (arquitectura tours), `ActiveTask.md`.
+- [x] **Documentación actualizada:** `CONFIG_GUIDE.md` (paso a paso Google Sheets), `DECISIONS.md` (ADR 08 + ADR 10), `ROADMAP.md` (Fase 6), `AI_HANDOVER.md` (arquitectura tours), `ActiveTask.md`.

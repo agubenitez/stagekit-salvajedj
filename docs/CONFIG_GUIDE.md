@@ -22,7 +22,7 @@ El archivo `config/landingdj.config.json` es el único punto de personalización
 
 - **No requiere base de datos** — todo está en el JSON.
 - **No requiere backend** — el servidor Next.js lo lee localmente.
-- **No requiere rebuild** — los cambios en el JSON se reflejan al recargar la página.
+- **No requiere rebuild** — los cambios en el JSON se reflejan al recargar la página (renderizado dinámico forzado).
 
 Puedes cambiar desde el nombre del artista hasta la paleta de colores, las secciones visibles, los textos, las redes sociales y el SEO sin abrir un solo archivo de código.
 
@@ -332,11 +332,11 @@ Creá una planilla en Google Sheets con las siguientes columnas (el orden import
 | `toursSource: "google-sheets"` + URL vacía/falla | Sección oculta (no se renderiza). Sin fallback a datos estáticos |
 | Fila inválida en la sheet | Descartada con warning server-side. Filas válidas se muestran normalmente |
 | Sheet vacía o 0 filas válidas | Sección oculta |
-| Cache | Los datos se cachean 5 minutos en memoria para no saturar Google |
+| Cache | Los datos se cachean 30 segundos en memoria para no saturar Google |
 
 #### Cambios sin deploy
 
-Cuando `toursSource: "google-sheets"`, el usuario final solo necesita editar la Google Sheet (agregar/quitar filas, modificar fechas, cambiar estados). Los cambios se reflejan con el TTL de caché (5 minutos). No requiere tocar el JSON, rebuild, ni redeploy.
+Cuando `toursSource: "google-sheets"`, el usuario final solo necesita editar la Google Sheet (agregar/quitar filas, modificar fechas, cambiar estados). Los cambios se reflejan con el TTL de caché (30 segundos). No requiere tocar el JSON, rebuild, ni redeploy.
 
 ### 2.18 Orden de Secciones
 

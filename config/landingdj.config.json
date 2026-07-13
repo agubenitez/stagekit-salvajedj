@@ -10,10 +10,10 @@
 
   "sectionMaxWidth": "1500px",
   "validSectionIds": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "music", "faq", "tours", "tour_table", "contact"],
-  "sectionOrder": ["hero","bio_con_foto","music","songs","tours","videos","gallery", "contact"],
-  "toursSource": "static",
+  "sectionOrder": ["hero","bio_con_foto","music","songs","tours","tour_table","videos","gallery", "contact"],
+  "toursSource": "google-sheets",
   "toursSourceValid": ["static", "google-sheets"],
-  "toursSheetUrl": "",
+  "toursSheetUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqPK5-3p4lGd9J1P3LQmeLDBdNbJ5Qh9ekLwk72nx92IoEdEvfHRlmkTtDnJ464AXf0vYQqq50Curs/pub?gid=0&single=true&output=csv",
 
   "hero": {
     "type": "image",

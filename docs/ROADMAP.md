@@ -67,14 +67,16 @@ Este documento establece la progresión del desarrollo de LandingDJ a través de
 - [x] Verificación de compilación.
 
 ### 📦 Fase 6 — Tours Dinámicos vía Google Sheets (COMPLETADO)
-- [x] Cache: `src/lib/tours/cache.ts` con TTL configurable.
-- [x] Sheet parser: `src/lib/tours/sheetParser.ts` — fetch CSV, parseo, validación Zod.
+- [x] Cache: `src/lib/tours/cache.ts` con TTL 30 seg.
+- [x] Sheet parser: `src/lib/tours/sheetParser.ts` — fetch CSV, parseo, validación Zod, limpieza BOM, detección HTML.
 - [x] API Route: `src/app/api/tours/route.ts` — GET handler con source switch.
 - [x] Schema extendido: `TOURS_SOURCES`, `ToursSource`, `toursSource`, `toursSourceValid`, `toursSheetUrl`.
 - [x] Config JSON: campos `toursSource`, `toursSourceValid`, `toursSheetUrl`.
-- [x] Tours.tsx + TourTable.tsx: fetch condicional, skeleton loading, ocultamiento en falla.
+- [x] Tours.tsx + TourTable.tsx: fetch condicional, skeleton loading, ocultamiento en falla, paginación (6 iniciales, +3 por clic).
 - [x] LandingContainer.tsx: prop `toursSource` pasada a ambos componentes.
 - [x] Validación de URL: `.optional().or(z.literal(''))` para soportar `""` cuando source es `static`.
+- [x] Renderizado dinámico: `page.tsx` exporta `force-dynamic` para SSR en cada request.
+- [x] Parser robustecido: limpieza BOM, detección de respuestas HTML, logging de diagnóstico.
 - [x] Dependencia: `csv-parse` instalado.
 - [x] Build verificado.
 

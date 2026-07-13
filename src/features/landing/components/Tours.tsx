@@ -38,7 +38,7 @@ function getStatusStyle(status: string | undefined, ticketUrl: string | undefine
   if (status === 'en_venta' && ticketUrl) {
     return {
       className: 'btn-primary',
-      label: tt.enVentaLabel ?? 'Comprar Entrada',
+      label: tt.enVentaLabel || 'Comprar Entrada',
       disabled: false,
     };
   }
@@ -47,19 +47,19 @@ function getStatusStyle(status: string | undefined, ticketUrl: string | undefine
     case 'agotado':
       return {
         className: 'bg-transparent border border-red-400/20 text-red-400/60 opacity-70 cursor-not-allowed pointer-events-none',
-        label: tt.agotadoLabel ?? 'Agotado',
+        label: tt.agotadoLabel || 'Agotado',
         disabled: true,
       };
     case 'finalizado':
       return {
-        className: 'bg-transparent border border-neutral-500/20 text-neutral-500/60 opacity-60 cursor-not-allowed pointer-events-none',
-        label: tt.finalizadoLabel ?? 'Finalizado',
+        className: 'bg-transparent border border-neutral-500/20 text-neutral-500/40 line-through opacity-60 cursor-not-allowed pointer-events-none',
+        label: tt.finalizadoLabel || 'Finalizado',
         disabled: true,
       };
     default:
       return {
-        className: 'bg-transparent border border-neutral-500/20 text-neutral-500/60 opacity-60 cursor-not-allowed pointer-events-none',
-        label: status === 'proximamente' ? (tt.proximamenteLabel ?? 'Próximamente') : (tt.proximamenteLabel ?? 'Próximamente'),
+        className: 'bg-transparent border border-primary/20 text-primary/60 cursor-not-allowed pointer-events-none',
+        label: tt.proximamenteLabel || 'Próximamente',
         disabled: true,
       };
   }
@@ -88,9 +88,13 @@ function ToursSkeleton() {
   );
 }
 
+const INITIAL_VISIBLE = 6;
+const LOAD_MORE_STEP = 3;
+
 export default function Tours({ tours, toursTexts, toursSource = 'static' }: ToursProps) {
   const [dynamicTours, setDynamicTours] = useState<TourEventConfig[] | null>(null);
   const [loading, setLoading] = useState(toursSource === 'google-sheets');
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   useEffect(() => {
     if (toursSource !== 'google-sheets') return;
@@ -129,15 +133,9 @@ export default function Tours({ tours, toursTexts, toursSource = 'static' }: Tou
   }
 
   const displayTours = toursSource === 'google-sheets' ? dynamicTours! : tours!;
+  const visibleTours = displayTours.slice(0, visibleCount);
+  const hasMore = visibleCount < displayTours.length;
   const tt = toursTexts ?? {};
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08 },
-    },
-  } as const;
 
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 15 },
@@ -164,14 +162,8 @@ export default function Tours({ tours, toursTexts, toursSource = 'static' }: Tou
           </p>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {displayTours.map((event) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleTours.map((event) => {
             const { day, month } = formatDate(event.date);
             const flag = flagEmoji(event.countryCode);
             const btn = getStatusStyle(event.status, event.ticketUrl, tt);
@@ -187,6 +179,9 @@ export default function Tours({ tours, toursTexts, toursSource = 'static' }: Tou
             return (
               <motion.div
                 key={event.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-50px' }}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
                 className="card p-5 md:p-6 flex flex-col gap-5 transition-all duration-300"
@@ -236,7 +231,18 @@ export default function Tours({ tours, toursTexts, toursSource = 'static' }: Tou
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
+
+        {hasMore && (
+          <div className="flex justify-center">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + LOAD_MORE_STEP)}
+              className="btn-primary px-8 py-3 rounded-[var(--btn-primary-radius)] text-xs font-bold uppercase tracking-wider"
+            >
+              Mostrar más
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

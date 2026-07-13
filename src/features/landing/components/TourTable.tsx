@@ -35,7 +35,7 @@ function getTicketInfo(status: string | undefined, ticketUrl: string | undefined
   if (status === 'en_venta' && ticketUrl) {
     return {
       className: 'text-xs font-bold uppercase tracking-wider text-primary hover:underline transition-all whitespace-nowrap',
-      label: tt.enVentaLabel ?? 'tickets',
+      label: tt.enVentaLabel || 'tickets',
       href: ticketUrl,
     };
   }
@@ -44,17 +44,17 @@ function getTicketInfo(status: string | undefined, ticketUrl: string | undefined
     case 'agotado':
       return {
         className: 'text-xs font-bold uppercase tracking-wider text-red-400/70 whitespace-nowrap',
-        label: tt.agotadoLabel ?? 'Sold Out',
+        label: tt.agotadoLabel || 'Sold Out',
       };
     case 'finalizado':
       return {
-        className: 'text-xs font-bold uppercase tracking-wider text-neutral-500/60 whitespace-nowrap',
-        label: tt.finalizadoLabel ?? 'Finalizado',
+        className: 'text-xs font-bold uppercase tracking-wider text-neutral-500/40 line-through whitespace-nowrap',
+        label: tt.finalizadoLabel || 'Finalizado',
       };
     default:
       return {
-        className: 'text-xs font-bold uppercase tracking-wider text-neutral-500/60 whitespace-nowrap',
-        label: status === 'proximamente' ? (tt.proximamenteLabel ?? 'Próximamente') : (tt.proximamenteLabel ?? 'Próximamente'),
+        className: 'text-xs font-bold uppercase tracking-wider text-primary/60 whitespace-nowrap',
+        label: tt.proximamenteLabel || 'Próximamente',
       };
   }
 }
@@ -80,9 +80,13 @@ function TourTableSkeleton() {
   );
 }
 
+const INITIAL_VISIBLE = 6;
+const LOAD_MORE_STEP = 3;
+
 export default function TourTable({ tourTable, tourTableTexts, toursSource = 'static' }: TourTableProps) {
   const [dynamicTours, setDynamicTours] = useState<TourEventConfig[] | null>(null);
   const [loading, setLoading] = useState(toursSource === 'google-sheets');
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   useEffect(() => {
     if (toursSource !== 'google-sheets') return;
@@ -121,15 +125,9 @@ export default function TourTable({ tourTable, tourTableTexts, toursSource = 'st
   }
 
   const displayTours = toursSource === 'google-sheets' ? dynamicTours! : tourTable!;
+  const visibleTours = displayTours.slice(0, visibleCount);
+  const hasMore = visibleCount < displayTours.length;
   const tt = tourTableTexts ?? {};
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.06 },
-    },
-  } as const;
 
   const rowVariants = {
     hidden: { opacity: 0, y: 10 },
@@ -157,22 +155,19 @@ export default function TourTable({ tourTable, tourTableTexts, toursSource = 'st
           </p>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="overflow-x-auto"
-        >
+        <div className="overflow-x-auto">
           <table className="w-full min-w-[600px]">
             <tbody>
-              {displayTours.map((event) => {
+              {visibleTours.map((event) => {
                 const flag = flagEmoji(event.countryCode);
                 const ticket = getTicketInfo(event.status, event.ticketUrl, tt);
 
                 return (
                   <motion.tr
                     key={event.id}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-50px' }}
                     variants={rowVariants}
                     className="transition-colors duration-300 hover:bg-[var(--section-bg)]/50"
                   >
@@ -212,7 +207,18 @@ export default function TourTable({ tourTable, tourTableTexts, toursSource = 'st
               })}
             </tbody>
           </table>
-        </motion.div>
+        </div>
+
+        {hasMore && (
+          <div className="flex justify-center">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + LOAD_MORE_STEP)}
+              className="btn-primary px-8 py-3 rounded-[var(--btn-primary-radius)] text-xs font-bold uppercase tracking-wider"
+            >
+              Mostrar más
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

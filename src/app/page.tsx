@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { getLandingConfig } from '@/lib/config/loader';
 import LandingContainer from '@/features/landing/components/LandingContainer';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * Generación Dinámica de Metadatos (SEO) con la API nativa de Next.js.
  * Extrae y mapea la sección SEO configurada en landingdj.config.json.

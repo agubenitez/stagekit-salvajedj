@@ -91,11 +91,11 @@ Usuario edita Google Sheet
 
 | Archivo | Rol |
 |---------|-----|
-| `src/lib/tours/cache.ts` | `MemoryCache<T>` con TTL configurable (5 min default). Thread-safe para API Route. |
+| `src/lib/tours/cache.ts` | `MemoryCache<T>` con TTL configurable (30 seg default). Thread-safe para API Route. |
 | `src/lib/tours/sheetParser.ts` | `fetchToursFromSheet()` — fetch CSV desde URL, parsea con `csv-parse/sync`, itera filas, valida cada una con `TourEventSchema.safeParse()`, loggea warnings para filas inválidas, retorna solo las válidas. |
 | `src/app/api/tours/route.ts` | GET handler que recibe query param `source`, hace switch entre leer del JSON o del sheet. Cachea resultados 5 min. |
-| `src/features/landing/components/Tours.tsx` | Renderiza tours como cards. Si `toursSource: 'google-sheets'`, fetchea de `/api/tours` y muestra skeleton mientras carga. |
-| `src/features/landing/components/TourTable.tsx` | Renderiza tours como tabla. Misma lógica de fetch condicional y skeleton. |
+| `src/features/landing/components/Tours.tsx` | Renderiza tours como cards. Si `toursSource: 'google-sheets'`, fetchea de `/api/tours` y muestra skeleton mientras carga. Paginación: 6 iniciales, botón "Mostrar más" de a 3. |
+| `src/features/landing/components/TourTable.tsx` | Renderiza tours como tabla. Misma lógica de fetch condicional, skeleton y paginación. |
 | `src/features/landing/components/LandingContainer.tsx` | Pasa `toursSource` como prop a Tours y TourTable. |
 
 ### Reglas de comportamiento
@@ -104,7 +104,7 @@ Usuario edita Google Sheet
 2. **`toursSource: "google-sheets"`** — ignora `config.tours`/`config.tourTable`, fetchea de API. Si falla, se oculta (sin fallback).
 3. **URL vacía + `google-sheets`** — se oculta (evita errores si no se configuró).
 4. **Filas inválidas** — descartadas con `console.warn` server-side. Solo las válidas se devuelven.
-5. **Caché** — 5 min TTL en memoria de la API Route. No persistente (se pierde al reiniciar el servidor).
+5. **Caché** — 30 seg TTL en memoria de la API Route. No persistente (se pierde al reiniciar el servidor).
 
 ### Cómo validar el sheet manualmente
 

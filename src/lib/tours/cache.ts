@@ -7,7 +7,7 @@ export class MemoryCache<T> {
   private entry: CacheEntry<T> | null = null;
   private ttlMs: number;
 
-  constructor(ttlMs = 300_000) {
+  constructor(ttlMs = 30_000) {
     this.ttlMs = ttlMs;
   }
 
