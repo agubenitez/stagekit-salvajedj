@@ -14,6 +14,7 @@ El proyecto utiliza un stack de nivel de producción alineado con los objetivos 
 - **Tipografía**: Catálogo predefinido con fuentes de Google Fonts cargadas de forma óptima.
 - **Validación de Configuración**: Zod para verificar que la configuración sea robusta y segura antes del renderizado.
 - **Servicios**: Arquitectura de correo electrónico desacoplada (Email Services) con un patrón Provider para evitar el acoplamiento con intermediarios específicos.
+- **CSV Parsing**: `csv-parse` configurado como paquete externo del servidor en `next.config.mjs` (`serverExternalPackages`) para evitar problemas de empaquetado con webpack.
 
 ---
 
