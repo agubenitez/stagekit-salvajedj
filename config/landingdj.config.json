@@ -1,25 +1,25 @@
 {
-  "designPreset": "SalvajeDjPreset",
+  "designPreset": "vapor",
   "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
 
-  "artisticName": "Salvaje",
-  "slogan": "   ",
+  "artisticName": "S a l v a j e",
+  "slogan": "",
   "description": "Naci en Montevideo, Uruguay. Mi infancia la vivi en Ombues de Lavalle, Colonia donde creci rodeado de la tranquilidad del campo y aprendi valores que hoy siguen guiando mi vida: la humildad, el esfuerzo y la perseverancia. Tambien estuve un tiempo viviendo en Tarariras donde termine la primaria y luego me mudo a Durazno, Uy. Donde hubo un antes y un despues en mi vida. Comenzaron muchas de las experiencias que formarian mi caracter y futuro profesional. como DJ he tenido la oportunidad de presentarme en una amplia variedad de escenarios, compartiendo mi propuesta musical en sunsets, afters, fiestas privadas y eventos de gran nivel. Como la convocatoria de X Live Producciones donde comparti cabina con ZAARK Dj y productor brasilero. Fiestas en Punta del este como la Neighborhood, yates, fiestas privadas. Sunsets en paradores como Chicho Chihuahua y Sea Sunset en ciudad de la costa.",
-  "logo": "/images/logo.png",
+  "logo": "/images/salvaje3.jpg",
   "favicon": "/favicon.ico",
 
   "sectionMaxWidth": "1500px",
   "validSectionIds": ["hero", "bio_con_foto", "bio", "services", "equipment", "gallery", "videos", "songs", "music", "faq", "tours", "tour_table", "contact"],
-  "sectionOrder": ["hero","bio_con_foto","music","songs","tours","tour_table","videos","gallery", "contact"],
+  "sectionOrder": ["hero","bio_con_foto","tour_table","music","videos","gallery", "equipment", "contact"],
   "toursSource": "google-sheets",
   "toursSourceValid": ["static", "google-sheets"],
   "toursSheetUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRqPK5-3p4lGd9J1P3LQmeLDBdNbJ5Qh9ekLwk72nx92IoEdEvfHRlmkTtDnJ464AXf0vYQqq50Curs/pub?gid=0&single=true&output=csv",
 
   "hero": {
     "type": "image",
-    "url": "/images/salvaje2.JPG",
+    "url": "/images/salvaje4.JPG",
     "ctaText": "Booking",
-    "layout": "titles",
+    "layout": "default",
     "titles": [
       { "text": "SALVAJE" },
       { "text": "SALVAJE" },
@@ -30,7 +30,7 @@
   },
   "heroTexts": {
     "badge": "DJ",
-    "scrollIndicator": "Descubrir"
+    "scrollIndicator": ""
   },
 
   "bioConFoto": {
@@ -40,7 +40,7 @@
   },
   "bioConFotoTexts": {
     "sectionTag": "Presentación",
-    "heading": "",
+    "heading": "Salvaje Dj",
     "description": ""
   },
 
@@ -83,17 +83,23 @@
       "category": "Controladores",
       "icon": "speaker"
     },
-    {
+     {
       "id": "eq_2",
       "name": "Mixer Pioneer DJM-900NXS2",
+      "category": "Controladores",
+      "icon": "speaker"
+    },
+    {
+      "id": "eq_3",
+      "name": "Pioneer DJ CDJ-3000",
       "category": "Sistemas de Audio",
       "icon": "speaker"
     }
   ],
   "equipmentTexts": {
     "sectionTag": "Rider Técnico",
-    "heading": "Equipamiento Profesional de Alta Gama",
-    "description": "Utilizamos tecnología líder en la industria para garantizar una fidelidad acústica óptima y un show visual impactante."
+    "heading": "Set up Profesional",
+    "description": ""
   },
 
   "gallery": [
@@ -291,7 +297,6 @@
     "networkError": "Ocurri\u00f3 un problema de red al intentar transmitir el mensaje.",
     "bullets": [
       "Soporte técnico y rider disponible",
-      "Contrato legal y factura disponible",
       "Respuesta garantizada en 24 horas hábiles"
     ]
   },
@@ -336,7 +341,7 @@
   "destinationEmail": "agubenitez1995@gmail.com",
 
   "seo": {
-    "title": "Alexis Verdi | DJ & Productor de Eventos de Lujo",
+    "title": "Salvaje DJ | DJ & Productor de Eventos de Lujo",
     "description": "DJ profesional internacional experto en bodas de alta gama, galas corporativas y experiencias inmersivas con la mejor acústica y equipamiento.",
     "keywords": ["DJ bodas boutique", "DJ eventos de lujo", "sonido profesional L-Acoustics", "DJ corporativos premium"],
     "ogImage": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200"
