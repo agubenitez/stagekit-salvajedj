@@ -42,7 +42,7 @@ Puedes cambiar desde el nombre del artista hasta la paleta de colores, las secci
 
 ### 2.2 Identidad Visual (Design Presets)
 
-La identidad visual se controla exclusivamente mediante **presets de diseño** que encapsulan colores, tipografía, radios, sombras, animaciones y ~56 tokens visuales. No se configuran colores ni fuentes directamente en el JSON.
+La identidad visual se controla exclusivamente mediante **presets de diseno** que encapsulan colores, tipografia, radios, sombras, animaciones y ~75 tokens visuales. No se configuran colores ni fuentes directamente en el JSON.
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -63,14 +63,15 @@ La identidad visual se controla exclusivamente mediante **presets de diseño** q
 | `vapor` | 🌸 Vibrante | Púrpura | Magenta `#d946ef` | Plus Jakarta Sans | `0.5rem` | Retro-wave, synthwave, ochentero |
 | `barbie` | 🌸 Vibrante | **Claro** | Hot pink `#ff1493` | Outfit | `1rem` | Femenino, divertido, pop |
 | `barbie-dark` | 🌸 Vibrante | Oscuro | Hot pink `#ff1493` | Outfit | `1rem` | Dark Barbie, actitud |
+| `barbie-blue` | ❄️ Fría | Oscuro | Azul eléctrico `#3b82f6` | Space Grotesk | `1rem` | Eléctrico, tecnológico, moderno |
 | `SalvajeDjPreset` | ❄️ Fría | Espacio profundo | Violeta `#a78bfa` | Space Grotesk | `1rem` | Galaxia, elegante, minimalista |
 
 ```json
 "designPreset": "SalvajeDjPreset",
-"validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"]
+"validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "barbie-blue", "SalvajeDjPreset"]
 ```
 
-> Para crear un preset nuevo: agregarlo en `src/features/theme/designPresets.ts` y añadir su nombre a `validDesignPresets` en el JSON.
+> Para crear un preset nuevo: agregarlo en `src/features/theme/designPresets.ts` y añadir su nombre a `validDesignPresets` en el JSON. Ver `docs/guiaImplementaciones/presetArchitecture.md` para la guia completa.
 
 ### 2.3 Hero
 
@@ -107,12 +108,6 @@ La dirección del layout (imagen a izquierda o derecha) se controla mediante el 
   "description": ""
 }
 ```
-
-| Ruta JSON | Tipo | Obligatorio | Descripción |
-|-----------|------|-------------|-------------|
-| `hero.type` | `"image"` \| `"video"` | No | Tipo de hero. Si se omite, usa `image` |
-| `hero.url` | `string` | Sí | URL de la imagen o video de fondo |
-| `hero.ctaText` | `string` | Sí | Texto del botón de llamada a la acción |
 
 ### 2.5 Servicios
 
@@ -257,7 +252,7 @@ Cada sección tiene un objeto `*Texts` que permite cambiar los labels, headings,
 | `seo.keywords` | `string[]` | Sí | Palabras clave para SEO |
 | `seo.ogImage` | `string` (URL) | No | Imagen para Open Graph (compartir en redes) |
 
-### 2.17 Tours / Eventos con Google Sheets (Dinámico)
+### 2.16 Tours / Eventos con Google Sheets (Dinamico)
 
 El sistema de tours soporta dos fuentes de datos controladas por el toggle `toursSource`:
 
@@ -338,7 +333,7 @@ Creá una planilla en Google Sheets con las siguientes columnas (el orden import
 
 Cuando `toursSource: "google-sheets"`, el usuario final solo necesita editar la Google Sheet (agregar/quitar filas, modificar fechas, cambiar estados). Los cambios se reflejan con el TTL de caché (30 segundos). No requiere tocar el JSON, rebuild, ni redeploy.
 
-### 2.18 Orden de Secciones
+### 2.17 Orden de Secciones
 
 | Ruta JSON | Tipo | Obligatorio | Descripción |
 |-----------|------|-------------|-------------|
@@ -367,7 +362,7 @@ Este ejemplo muestra cómo transformar la landing actual de un DJ en una landing
   "description": "DJ y Productor musical uruguaya radicada en Punta del este con mas de 5 años de trayectoria en la escena electronica nacional e internacional.",
   "logo": "/images/logo.png",
   "designPreset": "SalvajeDjPreset",
-  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
+  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "barbie-blue", "SalvajeDjPreset"],
   "services": [
     { "id": "srv_1", "title": "Festivales de electrónica y clubes", "description": "Sets exclusivos para cada evento...", "icon": "music" },
     { "id": "srv_2", "title": "Eventos privados y corporativos", "description": "Diseñamos experiencias musicales a medida...", "icon": "briefcase" }
@@ -412,7 +407,7 @@ Este ejemplo muestra cómo transformar la landing actual de un DJ en una landing
   "description": "Packs de presets diseñados por DJs para DJs. Sonidos curados para Tech House, Melodic House y Deep House. Compatibles con Serum, Ableton Live y más.",
   "logo": "/images/beatforge-logo.png",
   "designPreset": "neon",
-  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
+  "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "barbie-blue", "SalvajeDjPreset"],
   "services": [
     { "id": "srv_1", "title": "Tech House Essentials", "description": "50 presets diseñados para sesiones de tech house. Incluye leads, basses, plucks y fx. Compatible con Serum v1.5+.", "icon": "waveform" },
     { "id": "srv_2", "title": "Melodic Hypnosis", "description": "Packs de 40 presets melódicos con pads atmosféricos, arpegios y leads etéreos. Ideal para melodic house y progressive.", "icon": "headphones" },
@@ -607,7 +602,7 @@ No todo se puede cambiar desde el JSON. Estas modificaciones requieren editar ar
 |------------------|-----------------|
 | Agregar una sección nueva | Crear nuevo componente en `src/features/landing/components/` e importarlo en `LandingContainer.tsx` |
 | Cambiar el layout de una sección | Editar el componente React correspondiente |
-| Crear un nuevo design preset | Agregarlo en `src/features/theme/designPresets.ts` + añadir a `validDesignPresets` en el JSON |
+| Crear un nuevo design preset | Agregarlo en `src/features/theme/designPresets.ts` + añadir a `validDesignPresets` en el JSON. Ver `docs/guiaImplementaciones/presetArchitecture.md` |
 | Agregar/quitar tokens de un preset | Editar `DesignTokens` interface + el preset en `designPresets.ts` + `ThemeProvider.tsx` + `globals.css` |
 | Usar una fuente no listada | Agregarla al array `ALLOWED_FONTS` en `src/lib/config/schema.ts` |
 | Usar un icono no soportado | Agregarlo al mapper en `src/features/landing/components/IconMapper.tsx` |

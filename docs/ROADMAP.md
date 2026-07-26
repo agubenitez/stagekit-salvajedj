@@ -59,10 +59,10 @@ Este documento establece la progresión del desarrollo de LandingDJ a través de
 - [x] Documentación actualizada reflejando la implementación.
 
 ### 📦 Fase 5 — Sistema de Design Presets y Expansión Visual (COMPLETADO)
-- [x] Diseño e implementación de la interface `DesignTokens` con ~56 tokens (colores, tipografía, radios, sombras, animaciones, fondos de sección, overlays, letter-spacing, font-weight).
+- [x] Diseño e implementación de la interface `DesignTokens` con ~75 tokens (colores, tipografía, radios, sombras, animaciones, fondos de sección, overlays, letter-spacing, font-weight).
 - [x] Migración de `ThemeProvider` para inyección directa de CSS variables.
 - [x] Reemplazo de clases hardcodeadas en todos los componentes (`text-white` → `text-[var(--heading-color)]`, `bg-black` → `bg-[var(--hero-bg,#000)]`, etc.).
-- [x] 11 presets completos: `gold` (oscuro/dorado), `neon` (cián/cyberpunk), `slate` (monocromático/radios 0), `pearl` (claro/violeta), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave), `barbie` (hot pink/fondo claro/Playfair Display), `barbie-dark` (hot pink/fondo oscuro/Outfit), `SalvajeDjPreset` (violeta galáctico/Space Grotesk/galaxia minimalista).
+- [x] 12 presets completos: `gold` (oscuro/dorado), `neon` (cián/cyberpunk), `slate` (monocromático/radios 0), `pearl` (claro/violeta), `ember` (carmesí/dramático), `frost` (azul hielo/navy), `sienna` (terracota/ámbar/serif), `vapor` (magenta/retrowave), `barbie` (hot pink/fondo claro/Playfair Display), `barbie-dark` (hot pink/fondo oscuro/Outfit), `barbie-blue` (azul eléctrico/fondo oscuro/Space Grotesk), `SalvajeDjPreset` (violeta galáctico/Space Grotesk/galaxia minimalista).
 - [x] Documentación actualizada.
 - [x] Verificación de compilación.
 
@@ -80,6 +80,13 @@ Este documento establece la progresión del desarrollo de LandingDJ a través de
 - [x] Dependencia: `csv-parse` instalado.
 - [x] Build verificado.
 
-### 🔮 Próximos Pasos (Opcionales)
-- [ ] Incorporar proveedores adicionales (Resend, Brevo, SendGrid) en la fábrica de `src/lib/email/providers`.
+### Proximos Pasos (Opcionales)
+- [ ] Incorporar proveedores adicionales (Resend, Brevo, SendGrid) en `src/lib/email/providers`.
+- [ ] Implementar `enabled` flags explicitos por seccion (mejora #2 de IMPROVEMENTS.md).
+- [ ] Configurar estilos de botones personalizables desde el JSON (mejora #3).
+- [ ] Configurar animaciones desde el JSON (mejora #4).
+- [ ] Crear seccion de Testimonios (mejora #6).
+- [ ] Crear seccion de Pricing/Productos (mejora #7).
+- [ ] Personalizacion de fondo por seccion desde el JSON (mejora #8).
+- [ ] Crear seccion BioFondoOverlay como variante de BioConFoto (mejora #14).
 - [ ] Pruebas y despliegues productivos bajo entorno real en Cloud Run.

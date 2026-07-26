@@ -24,24 +24,37 @@ Adoptamos una organización híbrida basada en **Features** para el desarrollo d
 
 ```text
 /
+├── assets/                       # Assets auxiliares (AI Studio)
+├── config/
+│   └── landingdj.config.json     # Archivo unico de configuracion de la landing
+├── docs/                         # Documentacion de arquitectura y ciclo de vida
+│   ├── guiaImplementaciones/     # Guias tecnicas de implementacion
+│   │   └── presetArchitecture.md # Arquitectura de presets
+│   └── *.md                      # ADRs, Roadmap, Estado, Config, etc.
 ├── public/
-│   └── config/
-│       └── landingdj.config.json   # Archivo único de configuración de la landing
+│   └── images/                   # Imagenes de la landing
 ├── src/
-│   ├── app/                        # Rutas de Next.js App Router (Páginas y API Routes)
+│   ├── app/                      # Rutas de Next.js App Router (Paginas y API Routes)
 │   │   ├── api/
-│   │   │   └── contact/            # Endpoint modular de procesamiento de leads
-│   │   ├── layout.tsx              # Layout raíz (manejo dinámico de Google Fonts)
-│   │   └── page.tsx                # Orquestador del Server Component principal
-│   ├── features/                   # Módulos encapsulados de negocio y UI
+│   │   │   ├── contact/          # Endpoint modular de procesamiento de leads
+│   │   │   │   └── route.ts
+│   │   │   └── tours/            # Endpoint para tours dinamicos (Google Sheets)
+│   │   │       └── route.ts
+│   │   ├── globals.css           # Estilos globales + Tailwind v4 @theme
+│   │   ├── layout.tsx            # Layout raiz (manejo dinamico de Google Fonts)
+│   │   └── page.tsx              # Orquestador del Server Component principal
+│   ├── features/                 # Modulos encapsulados de negocio y UI
 │   │   ├── landing/
-│   │   │   └── components/         # Secciones de la landing (Hero, Bio, Contact, etc.)
+│   │   │   └── components/       # Secciones de la landing (Hero, Bio, Contact, etc.)
 │   │   └── theme/
-│   │       └── components/         # Inyección declarativa de estilos de diseño
-│   └── lib/                        # Núcleo y lógica agnóstica reutilizable
-│       ├── config/                 # Esquemas Zod y cargadores seguros
-│       └── email/                  # Abstracción desacoplada de despacho de correos
-└── docs/                           # Documentación de arquitectura y ciclo de vida
+│   │       ├── designPresets.ts  # 12 presets + ~75 tokens
+│   │       └── components/       # Inyeccion declarativa de estilos de diseno
+│   ├── lib/                      # Nucleo y logica agnostica reutilizable
+│   │   ├── config/               # Esquemas Zod y cargadores seguros
+│   │   ├── email/                # Abstraccion desacoplada de despacho de correos
+│   │   └── tours/                # Logica de tours dinamicos (cache + sheet parser)
+│   ├── hooks/                    # Custom hooks (vacio, reservado)
+│   └── types/                    # Definiciones de tipos TypeScript globales
 ```
 
 ---
