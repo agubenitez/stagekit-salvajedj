@@ -1,5 +1,5 @@
 {
-  "designPreset": "SalvajeDjPreset",
+  "designPreset": "vapor",
   "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
 
   "artisticName": "S a l v a j e",
@@ -19,7 +19,7 @@
     "type": "image",
     "url": "/images/salvaje4.JPG",
     "ctaText": "Booking",
-    "layout": "titles",
+    "layout": "default",
     "titles": [
       { "text": "SALVAJE" },
       { "text": "SALVAJE" },
