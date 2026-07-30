@@ -1,10 +1,10 @@
 {
-  "designPreset": "vapor",
+  "designPreset": "SalvajeDjPreset",
   "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
 
   "artisticName": "S a l v a j e",
   "slogan": "",
-  "description": "Naci en Montevideo, Uruguay. Mi infancia la vivi en Ombues de Lavalle, Colonia donde creci rodeado de la tranquilidad del campo y aprendi valores que hoy siguen guiando mi vida: la humildad, el esfuerzo y la perseverancia. Tambien estuve un tiempo viviendo en Tarariras donde termine la primaria y luego me mudo a Durazno, Uy. Donde hubo un antes y un despues en mi vida. Comenzaron muchas de las experiencias que formarian mi caracter y futuro profesional. como DJ he tenido la oportunidad de presentarme en una amplia variedad de escenarios, compartiendo mi propuesta musical en sunsets, afters, fiestas privadas y eventos de gran nivel. Como la convocatoria de X Live Producciones donde comparti cabina con ZAARK Dj y productor brasilero. Fiestas en Punta del este como la Neighborhood, yates, fiestas privadas. Sunsets en paradores como Chicho Chihuahua y Sea Sunset en ciudad de la costa.",
+  "description": "Naci en Montevideo, Uruguay. Mi infancia la vivi en Ombues de Lavalle, Colonia donde creci rodeado de la tranquilidad del campo y aprendi valores que hoy siguen guiando mi vida: la humildad, el esfuerzo y la perseverancia. Tambien estuve un tiempo viviendo en Tarariras donde termine la primaria y luego me mudo a Durazno, Uy. Donde hubo un antes y un despues en mi vida. Comenzaron muchas de las experiencias que formarian mi caracter y futuro profesional. Como DJ he tenido la oportunidad de presentarme en una amplia variedad de escenarios, compartiendo mi propuesta musical en sunsets, afters, fiestas privadas y eventos de gran nivel. Como la convocatoria de X Live Producciones donde comparti cabina con ZAARK Dj y productor brasilero. Fiestas en Punta del este como la Neighborhood, yates, fiestas privadas. Sunsets en paradores como Chicho Chihuahua y Sea Sunset en ciudad de la costa.",
   "logo": "/images/salvaje3.jpg",
   "favicon": "/favicon.ico",
 
@@ -19,7 +19,7 @@
     "type": "image",
     "url": "/images/salvaje4.JPG",
     "ctaText": "Booking",
-    "layout": "default",
+    "layout": "titles",
     "titles": [
       { "text": "SALVAJE" },
       { "text": "SALVAJE" },
