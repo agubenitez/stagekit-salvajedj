@@ -1,5 +1,5 @@
 {
-  "designPreset": "vapor",
+  "designPreset": "SalvajeDjPreset",
   "validDesignPresets": ["gold", "neon", "slate", "pearl", "ember", "frost", "sienna", "vapor", "barbie", "barbie-dark", "SalvajeDjPreset"],
 
   "artisticName": "S a l v a j e",
@@ -123,23 +123,17 @@
   "videos": [
     {
       "id": "vid_1",
-      "youtubeId": "kMJVNerOtRI",
-      "title": "Salvaje DJ- Live Sunset DJ Set 2026",
-      "thumbnail": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200"
-    },
-    {
-      "id": "vid_2",
-      "youtubeId": "kMJVNerOtRI",
-      "title": "Salvaje DJ- Live Set Punta del Este 2025",
-      "thumbnail": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1200"
+      "youtubeId": "SF-bMjK7psY",
+      "title": "Salvaje DJ - Melodic Techno Setiembre 2026",
+      "thumbnail": "https://i.ibb.co/ZpzpFTjp/Reel-Salvaje-DJ-YT-Cover-jpg.jpg"
     }
   ],
   "videosTexts": {
     "sectionTag": "Sets & Sesiones",
-    "heading": "Videosets en vivo",
-    "description": "Siente el ritmo y sintoniza con el espectáculo visual y auditivo de los sets en vivo, transmitidos directamente desde el escenario.",
+    "heading": "Youtube Salvaje_DJ",
+    "description": "Unite a la comunidad de seguidores y disfruta de los sets en vivo, sesiones exclusivas y momentos destacados",
     "playLabel": "Reproducir video",
-    "subtitleLabel": "Presentación Audiovisual Oficial"
+    "subtitleLabel": "Sesión en vivo"
   },
 
   "songs": [
@@ -147,13 +141,7 @@
       "id": "song_1",
       "title": "Starlight (Original Mix)",
       "url": "https://soundcloud.com/fabian-aguirre-842759933/salvaje-set-garden"
-    },
-    {
-      "id": "song_3",
-      "title": "Live at Club",
-      "url": "https://soundcloud.com/fabian-aguirre-842759933/set-psytrance-popper"
     }
-
   ],
   "songsTexts": {
     "sectionTag": "Escenario Musical",
@@ -166,16 +154,11 @@
       "id": "music_1",
       "title": "Starlight (Original Mix)",
       "url": "https://soundcloud.com/fabian-aguirre-842759933/salvaje-set-garden"
-    },
-    {
-      "id": "music_2",
-      "title": "Live at Club",
-      "url": "https://soundcloud.com/fabian-aguirre-842759933/set-psytrance-popper"
     }
   ],
   "musicTexts": {
     "sectionTag": "Mix & Sessions",
-    "heading": "Music",
+    "heading": "Sets",
     "description": " "
   },
 
@@ -284,8 +267,8 @@
 
   "contactForm": {
     "enabled": true,
-    "title": "Coordinemos tu Próxima Experiencia",
-    "description": "Completa tus datos de contacto y cuéntanos la fecha, locación y detalles iniciales de tu celebración. Nos pondremos en contacto contigo en menos de 24 horas hábiles para diseñar tu presupuesto a medida."
+    "title": "Coordinemos tu eventos",
+    "description": "Completa tus datos de contacto y cuéntanos la fecha, locación y detalles iniciales de tu evento. Nos pondremos en contacto contigo en menos de 24 horas hábiles."
   },
   "contactFormTexts": {
     "sectionTag": "Reservar Fecha",
