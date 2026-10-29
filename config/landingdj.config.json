@@ -92,12 +92,18 @@
     {
       "id": "eq_3",
       "name": "Pioneer DJ CDJ-3000",
-      "category": "Sistemas de Audio",
+      "category": "Controladores",
       "icon": "speaker"
     },
  {
       "id": "eq_4",
       "name": "Pioneer RMX-1000",
+      "category": "Controladores",
+      "icon": "speaker"
+    },
+     {
+      "id": "eq_5",
+      "name": "Monitores",
       "category": "Sistemas de Audio",
       "icon": "speaker"
     }
@@ -109,15 +115,15 @@
   },
 
   "gallery": [
-    "/images/salvaje2.JPG",
+    "/images/salvajemarciano.JPG",
     "/images/salvaje.PNG",
     "/images/salvaje5.JPG"
   ],
   "galleryTexts": {
     "sectionTag": "Gira & Eventos",
-    "heading": "Momentos Capturados en Vivo",
-    "description": "Una mirada de cerca a la atmósfera y energía de los sets en vivo, festivales y fiestas privadas de alto nivel.",
-    "overlayLabel": "Stage Capture"
+    "heading": "Momentos capturados",
+    "description": "Una mirada de cerca a la atmósfera y energía de los sets en vivo, festivales y fiestas privadas.",
+    "overlayLabel": "B 2 B"
   },
 
   "videos": [
@@ -267,11 +273,11 @@
 
   "contactForm": {
     "enabled": true,
-    "title": "Coordinemos tu eventos",
+    "title": "Booking & Contacto",
     "description": "Completa tus datos de contacto y cuéntanos la fecha, locación y detalles iniciales de tu evento. Nos pondremos en contacto contigo en menos de 24 horas hábiles."
   },
   "contactFormTexts": {
-    "sectionTag": "Reservar Fecha",
+    "sectionTag": "Coordinemos tu evento",
     "nameLabel": "Nombre Completo *",
     "namePlaceholder": "Ej. Carlos Mendoza",
     "emailLabel": "Correo de Contacto *",
@@ -294,7 +300,7 @@
     "bio": "Bio",
     "bioConFoto": "Bio",
     "services": "Servicios",
-    "equipment": "Equipamiento",
+    "equipment": "Rider",
     "gallery": "Gallery",
     "videos": "Sets Lives",
     "songs": "Music",
